@@ -1,73 +1,105 @@
-# Welcome to your Lovable project
 
-## Project info
+# ElectroTech - Electronic Solutions Company Website
 
-**URL**: https://lovable.dev/projects/a1966467-7f94-47d4-9f18-ad7946753705
+A modern, responsive marketing website for ElectroTech, a company specializing in innovative electronic solutions for industries worldwide.
 
-## How can I edit this code?
+![ElectroTech Website](https://lovable.dev/opengraph-image-p98pqg.png)
 
-There are several ways of editing your application.
+## Project Overview
 
-**Use Lovable**
+This website showcases ElectroTech's products, services, company information, and provides various ways for potential clients to connect with the business. The site is designed to highlight the company's technological expertise while maintaining a clean, professional aesthetic.
 
-Simply visit the [Lovable Project](https://lovable.dev/projects/a1966467-7f94-47d4-9f18-ad7946753705) and start prompting.
+## Key Features
 
-Changes made via Lovable will be committed automatically to this repo.
+- Responsive design optimized for all devices
+- Interactive global location map
+- Comprehensive company information and team profiles
+- Career opportunities section
+- Contact form with validation
+- News, references, events, and blog sections
+- Modern UI with intuitive navigation
 
-**Use your preferred IDE**
+## Technologies Used
 
-If you want to work locally using your own IDE, you can clone this repo and push changes. Pushed changes will also be reflected in Lovable.
+- **React 18**: Frontend library for building the user interface
+- **TypeScript**: For type-safe code
+- **Vite**: Build tool and development server
+- **React Router**: For navigation and routing
+- **TanStack Query**: For data fetching and state management
+- **Tailwind CSS**: For styling and responsive design
+- **Shadcn UI**: Component library for consistent UI elements
+- **Mapbox GL**: For interactive maps
+- **Lucide React**: For icon components
+- **React Hook Form**: For form handling and validation
+- **Zod**: For schema validation
+- **Recharts**: For data visualization
 
-The only requirement is having Node.js & npm installed - [install with nvm](https://github.com/nvm-sh/nvm#installing-and-updating)
+## Getting Started
 
-Follow these steps:
+### Prerequisites
 
+- Node.js 16.x or later
+- npm or yarn package manager
+
+### Installation
+
+1. Clone the repository
 ```sh
-# Step 1: Clone the repository using the project's Git URL.
-git clone <YOUR_GIT_URL>
-
-# Step 2: Navigate to the project directory.
-cd <YOUR_PROJECT_NAME>
-
-# Step 3: Install the necessary dependencies.
-npm i
-
-# Step 4: Start the development server with auto-reloading and an instant preview.
-npm run dev
+git clone <repository-url>
+cd electrotech-website
 ```
 
-**Edit a file directly in GitHub**
+2. Install dependencies
+```sh
+npm install
+# or
+yarn
+```
 
-- Navigate to the desired file(s).
-- Click the "Edit" button (pencil icon) at the top right of the file view.
-- Make your changes and commit the changes.
+3. Start the development server
+```sh
+npm run dev
+# or
+yarn dev
+```
 
-**Use GitHub Codespaces**
+4. Open your browser and navigate to `http://localhost:8080`
 
-- Navigate to the main page of your repository.
-- Click on the "Code" button (green button) near the top right.
-- Select the "Codespaces" tab.
-- Click on "New codespace" to launch a new Codespace environment.
-- Edit files directly within the Codespace and commit and push your changes once you're done.
+## Building for Production
 
-## What technologies are used for this project?
+```sh
+npm run build
+# or
+yarn build
+```
 
-This project is built with:
+The build artifacts will be stored in the `dist/` directory.
 
-- Vite
-- TypeScript
-- React
-- shadcn-ui
-- Tailwind CSS
+## Project Structure
 
-## How can I deploy this project?
+```
+src/
+├── components/     # Reusable UI components
+│   ├── about/      # About page components
+│   ├── careers/    # Career page components
+│   ├── contact/    # Contact page components
+│   ├── home/       # Home page components
+│   ├── layout/     # Layout components (Navbar, Footer)
+│   └── ui/         # UI component library
+├── hooks/          # Custom React hooks
+├── lib/            # Utility functions
+├── pages/          # Page components
+│   └── updates/    # News, Blog, Events pages
+└── main.tsx        # Application entry point
+```
 
-Simply open [Lovable](https://lovable.dev/projects/a1966467-7f94-47d4-9f18-ad7946753705) and click on Share -> Publish.
+## Browser Support
 
-## Can I connect a custom domain to my Lovable project?
+- Chrome (latest)
+- Firefox (latest)
+- Safari (latest)
+- Edge (latest)
 
-Yes, you can!
+## License
 
-To connect a domain, navigate to Project > Settings > Domains and click Connect Domain.
-
-Read more here: [Setting up a custom domain](https://docs.lovable.dev/tips-tricks/custom-domain#step-by-step-guide)
+[MIT](LICENSE)
