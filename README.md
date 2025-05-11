@@ -3,7 +3,7 @@
 
 A modern, responsive marketing website for ElectroTech, a company specializing in innovative electronic solutions for industries worldwide.
 
-![ElectroTech Website](https://lovable.dev/opengraph-image-p98pqg.png)
+![ElectroTech Website](https://github.com/Mohammed-Ateeq-nova/electron-pulse-marketing-hub/blob/main/Screenshot%202025-05-11%20211539.png?raw=true)
 
 ## Project Overview
 
