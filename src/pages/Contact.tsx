@@ -7,6 +7,7 @@ import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
 import ContactInfo from "@/components/contact/ContactInfo";
 import ContactForm from "@/components/contact/ContactForm";
+import Map from "@/components/contact/Map";
 import { Phone } from "lucide-react";
 import { useToast } from "@/components/ui/use-toast";
 
@@ -73,12 +74,15 @@ const Contact = () => {
         <section className="py-16 bg-white">
           <div className="container mx-auto px-4">
             <h2 className="text-3xl font-bold text-center mb-8">Find Us</h2>
-            <div className="aspect-video bg-gray-200 rounded-lg overflow-hidden">
-              {/* This would typically be replaced with an actual map implementation */}
-              <div className="w-full h-full flex items-center justify-center bg-gray-100">
-                <p className="text-gray-500">Interactive map would be displayed here</p>
-              </div>
-            </div>
+            <Map 
+              markers={[
+                { position: [-122.1697, 37.4275], title: "ElectroTech HQ - Silicon Valley" },
+                { position: [11.5820, 48.1351], title: "ElectroTech Europe - Munich" },
+                { position: [103.8198, 1.3521], title: "ElectroTech Asia - Singapore" }
+              ]}
+              zoom={2}
+              center={[-30, 20]} // Center the map to show all locations
+            />
             <div className="mt-8 text-center">
               <p className="text-gray-700 max-w-2xl mx-auto">
                 Visit our headquarters and experience our innovations firsthand. 
