@@ -1,12 +1,11 @@
 
-import { useState, useEffect } from 'react';
+import { useState, useEffect, useRef } from 'react';
 import { Link } from 'react-router-dom';
 import Navbar from "@/components/layout/Navbar";
 import Footer from "@/components/layout/Footer";
 import { Button } from "@/components/ui/button";
-import { Carousel, CarouselContent, CarouselItem, CarouselNext, CarouselPrevious } from "@/components/ui/carousel";
 import { Card, CardContent } from "@/components/ui/card";
-import { Newspaper, Calendar, Users, BookOpen, ChevronRight } from "lucide-react";
+import { Newspaper, Calendar, Users, BookOpen, ChevronRight, ChevronLeft } from "lucide-react";
 
 interface UpdateSection {
   id: number;
@@ -63,21 +62,118 @@ const updateSections: UpdateSection[] = [
 ];
 
 const Updates = () => {
-  const [currentSlide, setCurrentSlide] = useState(0);
+  const [currentIndex, setCurrentIndex] = useState(0);
+  const [isTransitioning, setIsTransitioning] = useState(false);
+  const autoPlayRef = useRef<NodeJS.Timeout>();
+  const touchStartX = useRef(0);
+  const touchEndX = useRef(0);
 
-  // Auto-rotate carousel
+  // Auto-play functionality
   useEffect(() => {
-    const interval = setInterval(() => {
-      setCurrentSlide((prev) => (prev + 1) % updateSections.length);
-    }, 5000);
-    return () => clearInterval(interval);
-  }, []);
+    const startAutoPlay = () => {
+      autoPlayRef.current = setInterval(() => {
+        nextSlide();
+      }, 5000);
+    };
+
+    startAutoPlay();
+    return () => {
+      if (autoPlayRef.current) {
+        clearInterval(autoPlayRef.current);
+      }
+    };
+  }, [currentIndex]);
+
+  const stopAutoPlay = () => {
+    if (autoPlayRef.current) {
+      clearInterval(autoPlayRef.current);
+    }
+  };
+
+  const nextSlide = () => {
+    if (isTransitioning) return;
+    setIsTransitioning(true);
+    setCurrentIndex((prev) => (prev + 1) % updateSections.length);
+    setTimeout(() => setIsTransitioning(false), 300);
+  };
+
+  const prevSlide = () => {
+    if (isTransitioning) return;
+    setIsTransitioning(true);
+    setCurrentIndex((prev) => (prev - 1 + updateSections.length) % updateSections.length);
+    setTimeout(() => setIsTransitioning(false), 300);
+  };
+
+  const goToSlide = (index: number) => {
+    if (isTransitioning || index === currentIndex) return;
+    setIsTransitioning(true);
+    setCurrentIndex(index);
+    setTimeout(() => setIsTransitioning(false), 300);
+  };
+
+  // Touch handlers for mobile swipe
+  const handleTouchStart = (e: React.TouchEvent) => {
+    touchStartX.current = e.touches[0].clientX;
+  };
+
+  const handleTouchMove = (e: React.TouchEvent) => {
+    touchEndX.current = e.touches[0].clientX;
+  };
+
+  const handleTouchEnd = () => {
+    if (!touchStartX.current || !touchEndX.current) return;
+    
+    const distance = touchStartX.current - touchEndX.current;
+    const isLeftSwipe = distance > 50;
+    const isRightSwipe = distance < -50;
+
+    if (isLeftSwipe) {
+      nextSlide();
+    } else if (isRightSwipe) {
+      prevSlide();
+    }
+  };
+
+  const getCardStyle = (index: number) => {
+    const position = index - currentIndex;
+    const absPosition = Math.abs(position);
+    
+    if (absPosition === 0) {
+      // Center card
+      return {
+        transform: 'translateX(0%) scale(1.1)',
+        opacity: 1,
+        zIndex: 3,
+      };
+    } else if (absPosition === 1) {
+      // Adjacent cards
+      return {
+        transform: `translateX(${position * 85}%) scale(0.9)`,
+        opacity: 0.7,
+        zIndex: 2,
+      };
+    } else if (absPosition === 2) {
+      // Second adjacent cards
+      return {
+        transform: `translateX(${position * 85}%) scale(0.8)`,
+        opacity: 0.4,
+        zIndex: 1,
+      };
+    } else {
+      // Hidden cards
+      return {
+        transform: `translateX(${position * 85}%) scale(0.7)`,
+        opacity: 0,
+        zIndex: 0,
+      };
+    }
+  };
 
   return (
     <>
       <Navbar />
       <main className="pt-20">
-        {/* Hero Section with Carousel */}
+        {/* Hero Section with Parallax Carousel */}
         <section className="relative h-screen overflow-hidden">
           {/* Background Images */}
           <div className="absolute inset-0">
@@ -85,7 +181,7 @@ const Updates = () => {
               <div
                 key={section.id}
                 className={`absolute inset-0 transition-opacity duration-1000 ${
-                  index === currentSlide ? 'opacity-100' : 'opacity-0'
+                  index === currentIndex ? 'opacity-100' : 'opacity-0'
                 }`}
               >
                 <div className="absolute inset-0 bg-gradient-to-r from-tech-black/90 to-tech-black/70 z-10" />
@@ -100,8 +196,8 @@ const Updates = () => {
 
           {/* Content */}
           <div className="container mx-auto px-4 h-full flex items-center relative z-20">
-            <div className="max-w-4xl">
-              <div className="mb-8">
+            <div className="max-w-6xl w-full">
+              <div className="mb-12 text-center">
                 <div className="inline-flex items-center gap-2 text-tech-blue mb-4">
                   <BookOpen size={20} />
                   <span className="uppercase tracking-wider text-sm font-semibold">Stay Updated</span>
@@ -114,62 +210,93 @@ const Updates = () => {
                 </p>
               </div>
 
-              {/* Carousel Cards */}
-              <div className="max-w-3xl">
-                <Carousel className="w-full">
-                  <CarouselContent>
-                    {updateSections.map((section, index) => {
-                      const IconComponent = section.icon;
-                      return (
-                        <CarouselItem key={section.id}>
-                          <Card className="bg-white/10 backdrop-blur-sm border-white/20 hover:bg-white/20 transition-all duration-300">
-                            <CardContent className="p-6">
-                              <div className="flex items-start gap-4">
-                                <div className="p-3 bg-tech-blue/20 rounded-lg">
-                                  <IconComponent className="h-6 w-6 text-tech-blue" />
+              {/* Parallax Carousel */}
+              <div className="relative max-w-5xl mx-auto">
+                {/* Navigation Buttons */}
+                <button
+                  onClick={() => { stopAutoPlay(); prevSlide(); }}
+                  className="absolute left-4 top-1/2 -translate-y-1/2 z-50 p-3 bg-white/10 backdrop-blur-sm border border-white/20 rounded-full hover:bg-white/20 transition-all duration-300 group"
+                  disabled={isTransitioning}
+                >
+                  <ChevronLeft className="h-6 w-6 text-white group-hover:scale-110 transition-transform" />
+                </button>
+                
+                <button
+                  onClick={() => { stopAutoPlay(); nextSlide(); }}
+                  className="absolute right-4 top-1/2 -translate-y-1/2 z-50 p-3 bg-white/10 backdrop-blur-sm border border-white/20 rounded-full hover:bg-white/20 transition-all duration-300 group"
+                  disabled={isTransitioning}
+                >
+                  <ChevronRight className="h-6 w-6 text-white group-hover:scale-110 transition-transform" />
+                </button>
+
+                {/* Carousel Container */}
+                <div 
+                  className="relative h-80 flex items-center justify-center perspective-1000"
+                  onTouchStart={handleTouchStart}
+                  onTouchMove={handleTouchMove}
+                  onTouchEnd={handleTouchEnd}
+                >
+                  {updateSections.map((section, index) => {
+                    const IconComponent = section.icon;
+                    const cardStyle = getCardStyle(index);
+                    
+                    return (
+                      <div
+                        key={section.id}
+                        className="absolute w-80 h-72 transition-all duration-500 ease-out cursor-pointer"
+                        style={cardStyle}
+                        onClick={() => { stopAutoPlay(); goToSlide(index); }}
+                      >
+                        <Card className="h-full bg-white/10 backdrop-blur-md border border-white/20 hover:bg-white/15 transition-all duration-300 shadow-2xl">
+                          <CardContent className="p-6 h-full flex flex-col justify-between">
+                            <div>
+                              <div className="flex items-start gap-4 mb-4">
+                                <div className="p-3 bg-tech-blue/30 rounded-lg backdrop-blur-sm">
+                                  <IconComponent className="h-6 w-6 text-white" />
                                 </div>
                                 <div className="flex-1">
                                   <h3 className="text-xl font-bold text-white mb-2">{section.title}</h3>
-                                  <p className="text-white/70 mb-3">{section.subtitle}</p>
-                                  <p className="text-white/60 text-sm mb-4">{section.description}</p>
-                                  <div className="flex items-center justify-between">
-                                    <span className="text-tech-blue text-sm font-medium">{section.stats}</span>
-                                    <Button 
-                                      variant="outline" 
-                                      size="sm" 
-                                      className="text-white border-white/30 hover:bg-white hover:text-tech-black" 
-                                      asChild
-                                    >
-                                      <Link to={section.link} className="flex items-center">
-                                        Explore <ChevronRight size={16} className="ml-1" />
-                                      </Link>
-                                    </Button>
-                                  </div>
+                                  <p className="text-white/80 mb-3 text-sm">{section.subtitle}</p>
                                 </div>
                               </div>
-                            </CardContent>
-                          </Card>
-                        </CarouselItem>
-                      );
-                    })}
-                  </CarouselContent>
-                  <CarouselPrevious className="left-4 bg-white/10 border-white/20 text-white hover:bg-white hover:text-tech-black" />
-                  <CarouselNext className="right-4 bg-white/10 border-white/20 text-white hover:bg-white hover:text-tech-black" />
-                </Carousel>
-              </div>
+                              <p className="text-white/70 text-sm mb-4 line-clamp-3">{section.description}</p>
+                            </div>
+                            
+                            <div className="flex items-center justify-between mt-auto">
+                              <span className="text-tech-blue text-sm font-medium bg-tech-blue/20 px-3 py-1 rounded-full">
+                                {section.stats}
+                              </span>
+                              <Button 
+                                variant="outline" 
+                                size="sm" 
+                                className="text-white border-white/30 hover:bg-white hover:text-tech-black backdrop-blur-sm" 
+                                asChild
+                              >
+                                <Link to={section.link} className="flex items-center">
+                                  Explore <ChevronRight size={16} className="ml-1" />
+                                </Link>
+                              </Button>
+                            </div>
+                          </CardContent>
+                        </Card>
+                      </div>
+                    );
+                  })}
+                </div>
 
-              {/* Slide Indicators */}
-              <div className="flex mt-8 space-x-2">
-                {updateSections.map((_, index) => (
-                  <button
-                    key={index}
-                    onClick={() => setCurrentSlide(index)}
-                    className={`h-2 rounded-full transition-all ${
-                      index === currentSlide ? 'w-8 bg-tech-blue' : 'w-2 bg-gray-400'
-                    }`}
-                    aria-label={`Go to slide ${index + 1}`}
-                  />
-                ))}
+                {/* Slide Indicators */}
+                <div className="flex justify-center mt-8 space-x-2">
+                  {updateSections.map((_, index) => (
+                    <button
+                      key={index}
+                      onClick={() => { stopAutoPlay(); goToSlide(index); }}
+                      className={`h-2 rounded-full transition-all duration-300 ${
+                        index === currentIndex ? 'w-8 bg-tech-blue' : 'w-2 bg-gray-400'
+                      }`}
+                      aria-label={`Go to slide ${index + 1}`}
+                    />
+                  ))}
+                </div>
               </div>
             </div>
           </div>
