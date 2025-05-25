@@ -73,7 +73,7 @@ const Updates = () => {
     const startAutoPlay = () => {
       autoPlayRef.current = setInterval(() => {
         nextSlide();
-      }, 5000);
+      }, 4000); // Auto-advance every 4 seconds
     };
 
     startAutoPlay();
@@ -139,24 +139,25 @@ const Updates = () => {
     const absPosition = Math.abs(position);
     
     if (absPosition === 0) {
-      // Center card
+      // Center card - more opaque with white border
       return {
         transform: 'translateX(0%) scale(1.1)',
-        opacity: 1,
+        opacity: 0.95,
         zIndex: 3,
+        border: '2px solid white',
       };
     } else if (absPosition === 1) {
       // Adjacent cards
       return {
         transform: `translateX(${position * 85}%) scale(0.9)`,
-        opacity: 0.7,
+        opacity: 0.6,
         zIndex: 2,
       };
     } else if (absPosition === 2) {
       // Second adjacent cards
       return {
         transform: `translateX(${position * 85}%) scale(0.8)`,
-        opacity: 0.4,
+        opacity: 0.3,
         zIndex: 1,
       };
     } else {
@@ -247,7 +248,7 @@ const Updates = () => {
                         style={cardStyle}
                         onClick={() => { stopAutoPlay(); goToSlide(index); }}
                       >
-                        <Card className="h-full bg-white/10 backdrop-blur-md border border-white/20 hover:bg-white/15 transition-all duration-300 shadow-2xl">
+                        <Card className="h-full bg-white/10 backdrop-blur-md border-white/20 hover:bg-white/15 transition-all duration-300 shadow-2xl">
                           <CardContent className="p-6 h-full flex flex-col justify-between">
                             <div>
                               <div className="flex items-start gap-4 mb-4">
@@ -269,7 +270,7 @@ const Updates = () => {
                               <Button 
                                 variant="outline" 
                                 size="sm" 
-                                className="text-white border-white/30 hover:bg-white hover:text-tech-black backdrop-blur-sm" 
+                                className="text-black bg-white border-white/30 hover:bg-gray-200 hover:text-black backdrop-blur-sm font-medium" 
                                 asChild
                               >
                                 <Link to={section.link} className="flex items-center">
