@@ -82,7 +82,7 @@ const Hero = () => {
             <Button size="lg" className="bg-tech-blue hover:bg-tech-accent text-white">
               Explore Our Products
             </Button>
-            <Button variant="outline" size="lg" className="text-white border-white hover:bg-white/10">
+            <Button variant="outline" size="lg" className="text-white border-white bg-transparent hover:bg-white hover:text-tech-black">
               <Link to="/about" className="flex items-center">
                 Learn More <ChevronRight size={16} className="ml-1" />
               </Link>
