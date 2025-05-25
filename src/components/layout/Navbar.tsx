@@ -1,6 +1,5 @@
-
 import { useState, useEffect } from 'react';
-import { Link } from 'react-router-dom';
+import { Link, useLocation } from 'react-router-dom';
 import { Menu, X, ChevronDown } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 
@@ -49,35 +48,65 @@ const navLinks: NavLinkProps[] = [
 ];
 
 const Navbar = () => {
+  const location = useLocation();
+  const isHomePage = location.pathname === '/';
+  
   const [isScrolled, setIsScrolled] = useState(false);
+  const [isVisible, setIsVisible] = useState(true);
+  const [lastScrollY, setLastScrollY] = useState(0);
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const [activeDropdown, setActiveDropdown] = useState<string | null>(null);
 
   // Handle scroll effect
   useEffect(() => {
     const handleScroll = () => {
-      if (window.scrollY > 10) {
-        setIsScrolled(true);
-      } else {
-        setIsScrolled(false);
+      const currentScrollY = window.scrollY;
+
+      // For home page: change background on scroll
+      if (isHomePage) {
+        setIsScrolled(currentScrollY > 10);
       }
+
+      // For all pages: hide/show navbar based on scroll direction
+      if (currentScrollY > lastScrollY && currentScrollY > 100) {
+        // Scrolling down - hide navbar
+        setIsVisible(false);
+      } else {
+        // Scrolling up - show navbar
+        setIsVisible(true);
+      }
+
+      setLastScrollY(currentScrollY);
     };
 
     window.addEventListener('scroll', handleScroll);
     return () => window.removeEventListener('scroll', handleScroll);
-  }, []);
+  }, [lastScrollY, isHomePage]);
 
   // Toggle dropdown for mobile menu
   const toggleDropdown = (title: string) => {
     setActiveDropdown(activeDropdown === title ? null : title);
   };
 
-  return (
-    <header
-      className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${
+  // Determine navbar styling based on page and scroll state
+  const getNavbarClasses = () => {
+    const baseClasses = "fixed top-0 left-0 right-0 z-50 transition-all duration-300";
+    
+    if (isHomePage) {
+      // Home page: transparent when at top, black when scrolled
+      return `${baseClasses} ${
         isScrolled ? 'bg-tech-black/90 shadow-md backdrop-blur-sm py-2' : 'bg-transparent py-4'
-      }`}
-    >
+      } ${isVisible ? 'translate-y-0' : '-translate-y-full'}`;
+    } else {
+      // Other pages: always black background
+      return `${baseClasses} bg-tech-black/90 shadow-md backdrop-blur-sm py-2 ${
+        isVisible ? 'translate-y-0' : '-translate-y-full'
+      }`;
+    }
+  };
+
+  return (
+    <header className={getNavbarClasses()}>
       <div className="container mx-auto px-4">
         <div className="flex items-center justify-between">
           {/* Logo */}
