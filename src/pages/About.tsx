@@ -4,9 +4,9 @@ import { useLocation } from "react-router-dom";
 import Navbar from "@/components/layout/Navbar";
 import Footer from "@/components/layout/Footer";
 import CompanyProfile from "@/components/about/CompanyProfile";
-import TeamSection from "@/components/about/TeamSection";
-import CoreValues from "@/components/about/CoreValues";
-import Manufacturing from "@/components/about/Manufacturing";
+import OurStrengths from "@/components/about/OurStrengths";
+import OurVision from "@/components/about/OurVision";
+import FocusedMarket from "@/components/about/FocusedMarket";
 import ScrollAnimation from "@/components/ui/scroll-animation";
 
 const About = () => {
@@ -40,7 +40,7 @@ const About = () => {
             <div className="container mx-auto px-4">
               <h1 className="text-4xl md:text-5xl font-bold mb-4">About Sri Datta Electronics</h1>
               <p className="text-xl max-w-3xl">
-                Leading the industry with innovative electronic solutions and a commitment to excellence.
+                Technology expertise organization with dedicated professionals delivering excellence in satellite programs, defense, and avionics.
               </p>
             </div>
           </div>
@@ -51,15 +51,15 @@ const About = () => {
         </ScrollAnimation>
         
         <ScrollAnimation direction="up" delay={200}>
-          <TeamSection />
+          <OurStrengths />
         </ScrollAnimation>
         
         <ScrollAnimation direction="up" delay={300}>
-          <CoreValues />
+          <OurVision />
         </ScrollAnimation>
         
         <ScrollAnimation direction="up" delay={400}>
-          <Manufacturing />
+          <FocusedMarket />
         </ScrollAnimation>
       </main>
       <Footer />
