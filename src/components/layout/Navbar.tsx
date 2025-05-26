@@ -1,4 +1,3 @@
-
 import { useState, useEffect } from 'react';
 import { Link, useLocation } from 'react-router-dom';
 import { Menu, X, ChevronDown } from 'lucide-react';
@@ -23,8 +22,8 @@ const navLinks: NavLinkProps[] = [
     href: '/about',
     children: [
       { title: 'Company Profile', href: '/about#profile' },
-      { title: 'Team', href: '/about#team' },
-      { title: 'Core Values', href: '/about#values' },
+      { title: 'Our Strengths', href: '/about#team' },
+      { title: '', href: '/about#values' },
       { title: 'Manufacturing', href: '/about#manufacturing' }
     ]
   },
@@ -37,13 +36,13 @@ const navLinks: NavLinkProps[] = [
     href: '/contact' 
   },
   { 
-    title: 'Updates', 
+    title: 'Products', 
     href: '/updates',
     children: [
-      { title: 'In News', href: '/updates/news' },
-      { title: 'References', href: '/updates/references' },
-      { title: 'Events', href: '/updates/events' },
-      { title: 'Blog', href: '/updates/blog' }
+      { title: 'Telemetry Systems', href: '/updates#telemetry' }, // Matches category ID
+      { title: 'Integration & System Solutions', href: '/updates#integration' },
+      { title: 'MIL-Grade Components & Assemblies', href: '/updates#mil-grade' },
+      { title: 'Power & RF Components', href: '/updates#power-rf' }
     ]
   }
 ];
@@ -108,7 +107,7 @@ const Navbar = () => {
 
   return (
     <header className={getNavbarClasses()}>
-      <div className="container mx-auto px-4">
+      <div className="container mx-auto px-20"> {/* Increased from px-4 to px-6 */}
         <div className="flex items-center justify-between">
           {/* Logo */}
           <Link to="/" className="flex items-center space-x-3">
@@ -121,7 +120,7 @@ const Navbar = () => {
           </Link>
 
           {/* Desktop Navigation */}
-          <nav className="hidden md:flex items-center space-x-8">
+          <nav className="hidden md:flex items-center space-x-8 ml-8"> {/* Added ml-8 for more space between logo and nav */}
             {navLinks.map((link) => (
               <div key={link.title} className="relative group">
                 <Link 
@@ -154,11 +153,6 @@ const Navbar = () => {
             ))}
           </nav>
 
-          {/* CTA Button */}
-          <Button className="hidden md:block bg-tech-blue hover:bg-tech-accent transition-colors">
-            Get a Quote
-          </Button>
-
           {/* Mobile Menu Button */}
           <button 
             className="md:hidden text-white" 
@@ -171,7 +165,7 @@ const Navbar = () => {
         {/* Mobile Navigation */}
         {isMenuOpen && (
           <div className="md:hidden absolute top-full left-0 right-0 bg-tech-black/95 backdrop-blur-sm py-4 shadow-lg animate-fade-in">
-            <div className="container mx-auto px-4">
+            <div className="container mx-auto px-6"> {/* Increased from px-4 to px-6 */}
               {navLinks.map((link) => (
                 <div key={link.title} className="py-2">
                   {link.children ? (
@@ -215,12 +209,7 @@ const Navbar = () => {
                   )}
                 </div>
               ))}
-              
-              <div className="mt-4 px-4">
-                <Button className="w-full bg-tech-blue hover:bg-tech-accent">
-                  Get a Quote
-                </Button>
-              </div>
+            
             </div>
           </div>
         )}

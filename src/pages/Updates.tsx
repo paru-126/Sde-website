@@ -1,172 +1,244 @@
-import { useState, useEffect, useRef } from 'react';
-import { Link } from 'react-router-dom';
+import { useState, useEffect } from 'react';
+import { Link, useLocation } from 'react-router-dom';
 import Navbar from "@/components/layout/Navbar";
 import Footer from "@/components/layout/Footer";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent } from "@/components/ui/card";
-import { Newspaper, Calendar, Users, BookOpen, ChevronRight, ChevronLeft } from "lucide-react";
+import { Cpu, Zap, Settings, Shield, Radio, ChevronRight } from "lucide-react";
 import ScrollAnimation from "@/components/ui/scroll-animation";
 
-interface UpdateSection {
+interface Product {
   id: number;
-  title: string;
-  subtitle: string;
+  name: string;
+  type: string;
+  category: string;
   description: string;
-  icon: any;
-  link: string;
   image: string;
-  stats: string;
+  specifications: string[];
+  slug: string;
 }
 
-const updateSections: UpdateSection[] = [
+interface ProductCategory {
+  id: string;
+  name: string;
+  icon: any;
+  color: string;
+}
+
+const productCategories: ProductCategory[] = [
   {
-    id: 1,
-    title: "Latest News",
-    subtitle: "Stay informed with our latest announcements",
-    description: "Get the latest updates on ElectroTech's innovations, partnerships, and industry recognition. From breakthrough technologies to award-winning products.",
-    icon: Newspaper,
-    link: "/updates/news",
-    image: "https://images.unsplash.com/photo-1504711434969-e33886168f5c?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&q=80&w=1080",
-    stats: "15+ Articles This Month"
+    id: 'all',
+    name: 'All Products',
+    icon: Settings,
+    color: 'bg-gray-500'
   },
   {
-    id: 2,
-    title: "Company Events",
-    subtitle: "Join us at industry conferences and workshops",
-    description: "Connect with our team at trade shows, conferences, and webinars. Learn about cutting-edge technologies and network with industry professionals.",
-    icon: Calendar,
-    link: "/updates/events",
-    image: "https://images.unsplash.com/photo-1540575467063-178a50c2df87?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&q=80&w=1080",
-    stats: "8 Upcoming Events"
+    id: 'telemetry',
+    name: 'Telemetry Systems',
+    icon: Radio,
+    color: 'bg-blue-500'
   },
   {
-    id: 3,
-    title: "References & Case Studies",
-    subtitle: "Real-world applications of our solutions",
-    description: "Discover how leading companies are leveraging ElectroTech solutions to drive innovation and achieve remarkable results in their industries.",
-    icon: Users,
-    link: "/updates/references",
-    image: "https://images.unsplash.com/photo-1556761175-5973dc0f32e7?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&q=80&w=1080",
-    stats: "50+ Success Stories"
+    id: 'integration',
+    name: 'Integration & System Solutions',
+    icon: Cpu,
+    color: 'bg-green-500'
   },
   {
-    id: 4,
-    title: "Technical Blog",
-    subtitle: "Deep insights from our engineering team",
-    description: "Explore technical articles, tutorials, and insights from our expert engineers. Learn about best practices, emerging trends, and innovative solutions.",
-    icon: BookOpen,
-    link: "/updates/blog",
-    image: "https://images.unsplash.com/photo-1486312338219-ce68d2c6f44d?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&q=80&w=1080",
-    stats: "20+ Technical Articles"
+    id: 'mil-grade',
+    name: 'MIL-Grade Components & Assemblies',
+    icon: Shield,
+    color: 'bg-red-500'
+  },
+  {
+    id: 'power-rf',
+    name: 'Power & RF Components',
+    icon: Zap,
+    color: 'bg-purple-500'
   }
 ];
 
-const Updates = () => {
-  const [currentIndex, setCurrentIndex] = useState(0);
-  const [isTransitioning, setIsTransitioning] = useState(false);
-  const autoPlayRef = useRef<NodeJS.Timeout>();
-  const touchStartX = useRef(0);
-  const touchEndX = useRef(0);
+const products: Product[] = [
+  // Telemetry Systems
+  {
+    id: 1,
+    name: 'Telemetry Tracking Stations',
+    type: 'Ground Systems',
+    category: 'telemetry',
+    description: 'Advanced telemetry tracking stations for real-time data acquisition and monitoring.',
+    image: 'https://images.unsplash.com/photo-1518709268805-4e9042af2176?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&q=80&w=600',
+    specifications: ['Multi-frequency tracking', 'Real-time data processing', 'Weather-resistant design'],
+    slug: 'telemetry-tracking-stations'
+  },
+  {
+    id: 2,
+    name: 'Ground Telemetry Checkout System',
+    type: 'Telemetry Subsystems',
+    category: 'telemetry',
+    description: 'Comprehensive ground-based telemetry checkout and validation systems.',
+    image: 'https://images.unsplash.com/photo-1581091226825-a6a2a5aee158?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&q=80&w=600',
+    specifications: ['Automated testing', 'Signal validation', 'Comprehensive reporting'],
+    slug: 'ground-telemetry-checkout-system'
+  },
+  {
+    id: 3,
+    name: 'Airborne Telemetry System',
+    type: 'Flight Systems',
+    category: 'telemetry',
+    description: 'High-performance airborne telemetry systems for aircraft and UAV applications.',
+    image: 'https://images.unsplash.com/photo-1540962351504-03099e0a754b?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&q=80&w=600',
+    specifications: ['Lightweight design', 'High data throughput', 'Multi-channel capability'],
+    slug: 'airborne-telemetry-system'
+  },
+  {
+    id: 4,
+    name: 'Drone Telemetry System',
+    type: 'UAV Systems',
+    category: 'telemetry',
+    description: 'Specialized telemetry systems designed for drone and unmanned vehicle operations.',
+    image: 'https://images.unsplash.com/photo-1473968512647-3e447244af8f?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&q=80&w=600',
+    specifications: ['Long-range communication', 'Low power consumption', 'Compact form factor'],
+    slug: 'drone-telemetry-system'
+  },
 
-  // Auto-play functionality
+  // Integration & System Solutions
+  {
+    id: 5,
+    name: 'High-Power RF Amplifiers',
+    type: 'RF Integration',
+    category: 'integration',
+    description: 'Integration and supply of high-power RF amplifiers for defense applications.',
+    image: 'https://images.unsplash.com/photo-1558618666-fcd25c85cd64?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&q=80&w=600',
+    specifications: ['High output power', 'Wide frequency range', 'Excellent linearity'],
+    slug: 'high-power-rf-amplifiers'
+  },
+  {
+    id: 6,
+    name: 'Ground Loop Back Units',
+    type: 'Test Equipment',
+    category: 'integration',
+    description: 'Specialized ground loop back units for system testing and validation.',
+    image: 'https://images.unsplash.com/photo-1581092921461-eab62e97a780?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&q=80&w=600',
+    specifications: ['Automated testing', 'Multiple interfaces', 'Real-time monitoring'],
+    slug: 'ground-loop-back-units'
+  },
+  {
+    id: 7,
+    name: 'Customized Defense Software',
+    type: 'Software Solutions',
+    category: 'integration',
+    description: 'Tailored software solutions for defense and aerospace applications.',
+    image: 'https://images.unsplash.com/photo-1516321318423-f06f85e504b3?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&q=80&w=600',
+    specifications: ['Custom development', 'Real-time processing', 'Secure architecture'],
+    slug: 'customized-defense-software'
+  },
+  {
+    id: 8,
+    name: 'Rugged Computers & Networking',
+    type: 'Computing Solutions',
+    category: 'integration',
+    description: 'Customized rugged computers and networking switches for harsh environments.',
+    image: 'https://images.unsplash.com/photo-1518709268805-4e9042af2176?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&q=80&w=600',
+    specifications: ['MIL-STD compliant', 'Extended temperature range', 'Shock and vibration resistant'],
+    slug: 'rugged-computers-networking'
+  },
+
+  // MIL-Grade Components & Assemblies
+  {
+    id: 9,
+    name: 'MIL-Grade Missile Cable Assemblies',
+    type: 'Cable Systems',
+    category: 'mil-grade',
+    description: 'High-reliability missile cable assemblies meeting military specifications.',
+    image: 'https://images.unsplash.com/photo-1581092795360-fd1ca04f0952?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&q=80&w=600',
+    specifications: ['MIL-STD-1553', 'High temperature rated', 'EMI/RFI shielding'],
+    slug: 'mil-grade-missile-cables'
+  },
+  {
+    id: 10,
+    name: 'MIL-Grade RF Cable Assemblies',
+    type: 'RF Cables',
+    category: 'mil-grade',
+    description: 'Precision RF cable assemblies for military and aerospace applications.',
+    image: 'https://images.unsplash.com/photo-1581092918056-0c4c3acd3789?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&q=80&w=600',
+    specifications: ['Low loss design', 'Phase stable', 'Environmental sealing'],
+    slug: 'mil-grade-rf-cables'
+  },
+  {
+    id: 11,
+    name: 'MIL-Grade Connectors',
+    type: 'Connectors',
+    category: 'mil-grade',
+    description: 'Comprehensive range of MIL-grade connectors including Micro-D, Nano-D, D-Sub, and Circular.',
+    image: 'https://images.unsplash.com/photo-1581093588401-fbb62a02f120?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&q=80&w=600',
+    specifications: ['Multiple form factors', 'Gold plated contacts', 'Hermetic sealing'],
+    slug: 'mil-grade-connectors'
+  },
+  {
+    id: 12,
+    name: 'MIL-Grade DC-DC Converters',
+    type: 'Power Conversion',
+    category: 'mil-grade',
+    description: 'High-efficiency DC-DC converters designed for military applications.',
+    image: 'https://images.unsplash.com/photo-1581092921461-eab62e97a780?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&q=80&w=600',
+    specifications: ['Wide input range', 'High efficiency', 'EMI compliant'],
+    slug: 'mil-grade-dc-dc-converters'
+  },
+
+  // Power & RF Components
+  {
+    id: 13,
+    name: 'DC Programmable Power Supplies',
+    type: 'Power Systems',
+    category: 'power-rf',
+    description: 'Precision DC programmable power supplies for testing and development.',
+    image: 'https://images.unsplash.com/photo-1558618047-3c8c76ca7d13?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&q=80&w=600',
+    specifications: ['Digital control', 'High precision', 'Remote programming'],
+    slug: 'dc-programmable-power-supplies'
+  },
+  {
+    id: 14,
+    name: 'RF & Microwave Components',
+    type: 'RF Components',
+    category: 'power-rf',
+    description: 'Comprehensive range of RF and microwave components for various applications.',
+    image: 'https://images.unsplash.com/photo-1581092795360-fd1ca04f0952?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&q=80&w=600',
+    specifications: ['Wide frequency range', 'Low insertion loss', 'High power handling'],
+    slug: 'rf-microwave-components'
+  }
+];
+
+const Products = () => {
+  const location = useLocation();
+  const [activeCategory, setActiveCategory] = useState('all');
+  const [filteredProducts, setFilteredProducts] = useState(products);
+  const [isFiltering, setIsFiltering] = useState(false);
+
+  // Handle hash-based navigation from navbar
   useEffect(() => {
-    const startAutoPlay = () => {
-      autoPlayRef.current = setInterval(() => {
-        nextSlide();
-      }, 4000); // Auto-advance every 4 seconds
-    };
+    const hash = location.hash.replace('#', '');
+    if (hash && productCategories.some(cat => cat.id === hash)) {
+      setActiveCategory(hash);
+    }
+  }, [location.hash]);
 
-    startAutoPlay();
-    return () => {
-      if (autoPlayRef.current) {
-        clearInterval(autoPlayRef.current);
+  useEffect(() => {
+    setIsFiltering(true);
+    setTimeout(() => {
+      if (activeCategory === 'all') {
+        setFilteredProducts(products);
+      } else {
+        setFilteredProducts(products.filter(product => product.category === activeCategory));
       }
-    };
-  }, [currentIndex]);
+      setIsFiltering(false);
+    }, 150);
+  }, [activeCategory]);
 
-  const stopAutoPlay = () => {
-    if (autoPlayRef.current) {
-      clearInterval(autoPlayRef.current);
-    }
-  };
-
-  const nextSlide = () => {
-    if (isTransitioning) return;
-    setIsTransitioning(true);
-    setCurrentIndex((prev) => (prev + 1) % updateSections.length);
-    setTimeout(() => setIsTransitioning(false), 300);
-  };
-
-  const prevSlide = () => {
-    if (isTransitioning) return;
-    setIsTransitioning(true);
-    setCurrentIndex((prev) => (prev - 1 + updateSections.length) % updateSections.length);
-    setTimeout(() => setIsTransitioning(false), 300);
-  };
-
-  const goToSlide = (index: number) => {
-    if (isTransitioning || index === currentIndex) return;
-    setIsTransitioning(true);
-    setCurrentIndex(index);
-    setTimeout(() => setIsTransitioning(false), 300);
-  };
-
-  // Touch handlers for mobile swipe
-  const handleTouchStart = (e: React.TouchEvent) => {
-    touchStartX.current = e.touches[0].clientX;
-  };
-
-  const handleTouchMove = (e: React.TouchEvent) => {
-    touchEndX.current = e.touches[0].clientX;
-  };
-
-  const handleTouchEnd = () => {
-    if (!touchStartX.current || !touchEndX.current) return;
-    
-    const distance = touchStartX.current - touchEndX.current;
-    const isLeftSwipe = distance > 50;
-    const isRightSwipe = distance < -50;
-
-    if (isLeftSwipe) {
-      nextSlide();
-    } else if (isRightSwipe) {
-      prevSlide();
-    }
-  };
-
-  const getCardStyle = (index: number) => {
-    const position = index - currentIndex;
-    const absPosition = Math.abs(position);
-    
-    if (absPosition === 0) {
-      // Center card - more opaque with white border
-      return {
-        transform: 'translateX(0%) scale(1.1)',
-        opacity: 0.95,
-        zIndex: 3,
-        border: '2px solid white',
-      };
-    } else if (absPosition === 1) {
-      // Adjacent cards
-      return {
-        transform: `translateX(${position * 85}%) scale(0.9)`,
-        opacity: 0.6,
-        zIndex: 2,
-      };
-    } else if (absPosition === 2) {
-      // Second adjacent cards
-      return {
-        transform: `translateX(${position * 85}%) scale(0.8)`,
-        opacity: 0.3,
-        zIndex: 1,
-      };
-    } else {
-      // Hidden cards
-      return {
-        transform: `translateX(${position * 85}%) scale(0.7)`,
-        opacity: 0,
-        zIndex: 0,
-      };
+  const handleCategoryChange = (categoryId: string) => {
+    if (categoryId !== activeCategory) {
+      setActiveCategory(categoryId);
+      // Update URL hash without triggering navigation
+      window.location.hash = categoryId === 'all' ? '' : categoryId;
     }
   };
 
@@ -174,170 +246,175 @@ const Updates = () => {
     <>
       <Navbar />
       <main className="pt-20">
-        {/* Hero Section with Parallax Carousel */}
-        <section className="relative h-screen overflow-hidden">
-          {/* Background Images */}
+        {/* Hero Section */}
+        <section className="relative h-96 overflow-hidden bg-gradient-to-r from-tech-black to-tech-accent">
           <div className="absolute inset-0">
-            {updateSections.map((section, index) => (
-              <div
-                key={section.id}
-                className={`absolute inset-0 transition-opacity duration-1000 ${
-                  index === currentIndex ? 'opacity-100' : 'opacity-0'
-                }`}
-              >
-                <div className="absolute inset-0 bg-gradient-to-r from-tech-black/90 to-tech-black/70 z-10" />
-                <img
-                  src={section.image}
-                  alt={section.title}
-                  className="w-full h-full object-cover"
-                />
-              </div>
-            ))}
+            <div className="absolute inset-0 bg-gradient-to-r from-tech-black/90 to-tech-black/70 z-10" />
+            <img
+              src="https://images.unsplash.com/photo-1518709268805-4e9042af2176?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&q=80&w=1920"
+              alt="Electronics and Technology"
+              className="w-full h-full object-cover"
+            />
           </div>
 
-          {/* Content */}
           <div className="container mx-auto px-4 h-full flex items-center relative z-20">
-            <div className="max-w-6xl w-full">
-              <ScrollAnimation direction="fade" className="mb-12 text-center">
+            <div className="max-w-4xl">
+              <ScrollAnimation direction="fade" className="mb-8">
                 <div className="inline-flex items-center gap-2 text-tech-blue mb-4">
-                  <BookOpen size={20} />
-                  <span className="uppercase tracking-wider text-sm font-semibold">Stay Updated</span>
+                  <Settings size={20} />
+                  <span className="uppercase tracking-wider text-sm font-semibold">Our Products</span>
                 </div>
                 <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold text-white mb-6">
-                  Latest Updates & Insights
+                  Advanced Electronics Solutions
                 </h1>
-                <p className="text-xl text-white/80 mb-8">
-                  Discover our latest news, events, case studies, and technical insights all in one place.
+                <p className="text-xl text-white/80 mb-8 max-w-2xl">
+                  Discover our comprehensive range of telemetry systems, MIL-grade components, 
+                  and cutting-edge RF solutions designed for defense and aerospace applications.
                 </p>
-              </ScrollAnimation>
-
-              {/* Parallax Carousel */}
-              <ScrollAnimation direction="up" delay={300}>
-                <div className="relative max-w-5xl mx-auto">
-                  {/* Navigation Buttons */}
-                  <button
-                    onClick={() => { stopAutoPlay(); prevSlide(); }}
-                    className="absolute left-4 top-1/2 -translate-y-1/2 z-50 p-3 bg-white/10 backdrop-blur-sm border border-white/20 rounded-full hover:bg-white/20 transition-all duration-300 group"
-                    disabled={isTransitioning}
-                  >
-                    <ChevronLeft className="h-6 w-6 text-white group-hover:scale-110 transition-transform" />
-                  </button>
-                  
-                  <button
-                    onClick={() => { stopAutoPlay(); nextSlide(); }}
-                    className="absolute right-4 top-1/2 -translate-y-1/2 z-50 p-3 bg-white/10 backdrop-blur-sm border border-white/20 rounded-full hover:bg-white/20 transition-all duration-300 group"
-                    disabled={isTransitioning}
-                  >
-                    <ChevronRight className="h-6 w-6 text-white group-hover:scale-110 transition-transform" />
-                  </button>
-
-                  {/* Carousel Container */}
-                  <div 
-                    className="relative h-80 flex items-center justify-center perspective-1000"
-                    onTouchStart={handleTouchStart}
-                    onTouchMove={handleTouchMove}
-                    onTouchEnd={handleTouchEnd}
-                  >
-                    {updateSections.map((section, index) => {
-                      const IconComponent = section.icon;
-                      const cardStyle = getCardStyle(index);
-                      
-                      return (
-                        <div
-                          key={section.id}
-                          className="absolute w-80 h-72 transition-all duration-500 ease-out cursor-pointer"
-                          style={cardStyle}
-                          onClick={() => { stopAutoPlay(); goToSlide(index); }}
-                        >
-                          <Card className="h-full bg-white/10 backdrop-blur-md border-white/20 hover:bg-white/15 transition-all duration-300 shadow-2xl">
-                            <CardContent className="p-6 h-full flex flex-col justify-between">
-                              <div>
-                                <div className="flex items-start gap-4 mb-4">
-                                  <div className="p-3 bg-tech-blue/30 rounded-lg backdrop-blur-sm">
-                                    <IconComponent className="h-6 w-6 text-white" />
-                                  </div>
-                                  <div className="flex-1">
-                                    <h3 className="text-xl font-bold text-white mb-2">{section.title}</h3>
-                                    <p className="text-white/80 mb-3 text-sm">{section.subtitle}</p>
-                                  </div>
-                                </div>
-                                <p className="text-white/70 text-sm mb-4 line-clamp-3">{section.description}</p>
-                              </div>
-                              
-                              <div className="flex items-center justify-between mt-auto">
-                                <span className="text-tech-blue text-sm font-medium bg-tech-blue/20 px-3 py-1 rounded-full">
-                                  {section.stats}
-                                </span>
-                                <Button 
-                                  variant="outline" 
-                                  size="sm" 
-                                  className="text-black bg-white border-white/30 hover:bg-gray-200 hover:text-black backdrop-blur-sm font-medium" 
-                                  asChild
-                                >
-                                  <Link to={section.link} className="flex items-center">
-                                    Explore <ChevronRight size={16} className="ml-1" />
-                                  </Link>
-                                </Button>
-                              </div>
-                            </CardContent>
-                          </Card>
-                        </div>
-                      );
-                    })}
-                  </div>
-
-                  {/* Slide Indicators */}
-                  <div className="flex justify-center mt-8 space-x-2">
-                    {updateSections.map((_, index) => (
-                      <button
-                        key={index}
-                        onClick={() => { stopAutoPlay(); goToSlide(index); }}
-                        className={`h-2 rounded-full transition-all duration-300 ${
-                          index === currentIndex ? 'w-8 bg-tech-blue' : 'w-2 bg-gray-400'
-                        }`}
-                        aria-label={`Go to slide ${index + 1}`}
-                      />
-                    ))}
-                  </div>
-                </div>
+                <Button 
+                  size="lg" 
+                  className="bg-tech-blue hover:bg-tech-accent text-white"
+                  onClick={() => document.getElementById('products-section')?.scrollIntoView({ behavior: 'smooth' })}
+                >
+                  Explore Products
+                </Button>
               </ScrollAnimation>
             </div>
           </div>
         </section>
 
-        {/* Quick Links Section */}
-        <section className="py-16 bg-white">
+        {/* Products Section */}
+        <section id="products-section" className="py-16 bg-gray-50">
           <div className="container mx-auto px-4">
             <ScrollAnimation direction="up" className="text-center mb-12">
-              <h2 className="text-3xl font-bold">Explore All Updates</h2>
+              <h2 className="text-3xl md:text-4xl font-bold mb-4">Complete Product Range</h2>
+              <p className="text-lg text-gray-600 max-w-2xl mx-auto">
+                Browse our extensive catalog of products across different categories
+              </p>
             </ScrollAnimation>
-            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
-              {updateSections.map((section, index) => {
-                const IconComponent = section.icon;
-                return (
-                  <ScrollAnimation key={section.id} direction="up" delay={index * 100}>
-                    <Card className="group hover:shadow-lg transition-all duration-300 hover:-translate-y-1">
-                      <CardContent className="p-6 text-center">
-                        <div className="p-4 bg-tech-blue/10 rounded-full w-16 h-16 mx-auto mb-4 flex items-center justify-center group-hover:bg-tech-blue/20 transition-colors">
-                          <IconComponent className="h-8 w-8 text-tech-blue" />
+
+            {/* Category Filter Buttons */}
+            <ScrollAnimation direction="up" delay={200} className="mb-12">
+              <div className="flex flex-wrap justify-center gap-4">
+                {productCategories.map((category) => {
+                  const IconComponent = category.icon;
+                  return (
+                    <button
+                      key={category.id}
+                      onClick={() => handleCategoryChange(category.id)}
+                      className={`flex items-center gap-2 px-6 py-3 rounded-full font-medium transition-all duration-300 ${
+                        activeCategory === category.id
+                          ? 'bg-tech-blue text-white shadow-lg transform scale-105'
+                          : 'bg-white text-gray-700 hover:bg-gray-100 border border-gray-200 hover:border-tech-blue/30'
+                      }`}
+                    >
+                      <IconComponent size={18} />
+                      <span className="hidden sm:inline">{category.name}</span>
+                      <span className="sm:hidden">
+                        {category.name.split(' ')[0]} {category.name.includes('&') ? '& More' : ''}
+                      </span>
+                    </button>
+                  );
+                })}
+              </div>
+            </ScrollAnimation>
+
+            {/* Products Grid */}
+            <div className={`transition-all duration-300 ${isFiltering ? 'opacity-50 scale-95' : 'opacity-100 scale-100'}`}>
+              <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-8">
+                {filteredProducts.map((product, index) => (
+                  <ScrollAnimation
+                    key={product.id}
+                    direction="up"
+                    delay={index * 50}
+                    className="h-full"
+                  >
+                    <Card className="group hover:shadow-xl transition-all duration-300 hover:-translate-y-2 h-full flex flex-col">
+                      <div className="relative overflow-hidden rounded-t-lg">
+                        <img
+                          src={product.image}
+                          alt={product.name}
+                          className="w-full h-48 object-cover group-hover:scale-110 transition-transform duration-500"
+                        />
+                        <div className="absolute top-4 right-4">
+                          <span className="bg-tech-blue/90 text-white text-xs px-3 py-1 rounded-full font-medium">
+                            {product.type}
+                          </span>
                         </div>
-                        <h3 className="text-lg font-bold mb-2">{section.title}</h3>
-                        <p className="text-gray-600 text-sm mb-4">{section.subtitle}</p>
-                        <p className="text-tech-blue text-sm font-medium mb-4">{section.stats}</p>
+                      </div>
+                      
+                      <CardContent className="p-6 flex-1 flex flex-col">
+                        <div className="flex-1">
+                          <h3 className="text-lg font-bold mb-2 group-hover:text-tech-blue transition-colors">
+                            {product.name}
+                          </h3>
+                          <p className="text-gray-600 text-sm mb-4 line-clamp-3">
+                            {product.description}
+                          </p>
+                          
+                          <div className="mb-4">
+                            <h4 className="text-sm font-semibold text-gray-800 mb-2">Key Features:</h4>
+                            <ul className="text-xs text-gray-600 space-y-1">
+                              {product.specifications.slice(0, 3).map((spec, idx) => (
+                                <li key={idx} className="flex items-start gap-2">
+                                  <span className="w-1 h-1 bg-tech-blue rounded-full mt-2 flex-shrink-0"></span>
+                                  {spec}
+                                </li>
+                              ))}
+                            </ul>
+                          </div>
+                        </div>
+                        
                         <Button 
-                          className="w-full bg-tech-blue hover:bg-tech-accent" 
+                          className="w-full bg-tech-blue hover:bg-tech-accent group-hover:bg-tech-accent transition-colors" 
                           asChild
                         >
-                          <Link to={section.link}>
-                            View All
+                          <Link to={`/products/${product.slug}`} className="flex items-center justify-center">
+                            Learn More <ChevronRight size={16} className="ml-1" />
                           </Link>
                         </Button>
                       </CardContent>
                     </Card>
                   </ScrollAnimation>
-                );
-              })}
+                ))}
+              </div>
             </div>
+
+            {/* No Products Message */}
+            {filteredProducts.length === 0 && !isFiltering && (
+              <div className="text-center py-12">
+                <p className="text-gray-500 text-lg">No products found in this category.</p>
+              </div>
+            )}
+          </div>
+        </section>
+
+        {/* Call to Action Section */}
+        <section className="py-16 bg-tech-black text-white">
+          <div className="container mx-auto px-4 text-center">
+            <ScrollAnimation direction="up">
+              <h2 className="text-3xl font-bold mb-4">Need Custom Solutions?</h2>
+              <p className="text-lg text-white/80 mb-8 max-w-2xl mx-auto">
+                Our engineering team can develop customized products to meet your specific requirements.
+              </p>
+              <div className="flex flex-col sm:flex-row gap-4 justify-center">
+                <Button 
+                  size="lg" 
+                  className="bg-tech-blue hover:bg-tech-accent"
+                  asChild
+                >
+                  <Link to="/contact">Request Quote</Link>
+                </Button>
+                <Button 
+                  size="lg" 
+                  variant="outline" 
+                  className="border-white text-white hover:bg-white hover:text-tech-black"
+                  asChild
+                >
+                  <Link to="/contact">Technical Support</Link>
+                </Button>
+              </div>
+            </ScrollAnimation>
           </div>
         </section>
       </main>
@@ -346,4 +423,4 @@ const Updates = () => {
   );
 };
 
-export default Updates;
+export default Products;
