@@ -113,9 +113,9 @@ const Navbar = () => {
           {/* Logo */}
           <Link to="/" className="flex items-center space-x-3">
             <img 
-              src="/lovable-uploads/c8630fe3-a8e7-4961-b26c-ca61ce877cd6.png" 
+              src="/lovable-uploads/316fa14c-e765-438c-bdc7-5118fad8d627.png" 
               alt="Sri Datta Electronics Logo" 
-              className="h-10 w-10 object-contain"
+              className="h-10 w-10 object-contain rounded-full"
             />
             <span className="text-xl font-bold text-white">Sri Datta <span className="text-tech-blue">Electronics</span></span>
           </Link>
