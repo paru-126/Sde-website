@@ -198,7 +198,7 @@ const Updates = () => {
           {/* Content */}
           <div className="container mx-auto px-4 h-full flex items-center relative z-20">
             <div className="max-w-6xl w-full">
-              <div className="mb-12 text-center">
+              <ScrollAnimation direction="fade" className="mb-12 text-center">
                 <div className="inline-flex items-center gap-2 text-tech-blue mb-4">
                   <BookOpen size={20} />
                   <span className="uppercase tracking-wider text-sm font-semibold">Stay Updated</span>
@@ -209,96 +209,98 @@ const Updates = () => {
                 <p className="text-xl text-white/80 mb-8">
                   Discover our latest news, events, case studies, and technical insights all in one place.
                 </p>
-              </div>
+              </ScrollAnimation>
 
               {/* Parallax Carousel */}
-              <div className="relative max-w-5xl mx-auto">
-                {/* Navigation Buttons */}
-                <button
-                  onClick={() => { stopAutoPlay(); prevSlide(); }}
-                  className="absolute left-4 top-1/2 -translate-y-1/2 z-50 p-3 bg-white/10 backdrop-blur-sm border border-white/20 rounded-full hover:bg-white/20 transition-all duration-300 group"
-                  disabled={isTransitioning}
-                >
-                  <ChevronLeft className="h-6 w-6 text-white group-hover:scale-110 transition-transform" />
-                </button>
-                
-                <button
-                  onClick={() => { stopAutoPlay(); nextSlide(); }}
-                  className="absolute right-4 top-1/2 -translate-y-1/2 z-50 p-3 bg-white/10 backdrop-blur-sm border border-white/20 rounded-full hover:bg-white/20 transition-all duration-300 group"
-                  disabled={isTransitioning}
-                >
-                  <ChevronRight className="h-6 w-6 text-white group-hover:scale-110 transition-transform" />
-                </button>
+              <ScrollAnimation direction="up" delay={300}>
+                <div className="relative max-w-5xl mx-auto">
+                  {/* Navigation Buttons */}
+                  <button
+                    onClick={() => { stopAutoPlay(); prevSlide(); }}
+                    className="absolute left-4 top-1/2 -translate-y-1/2 z-50 p-3 bg-white/10 backdrop-blur-sm border border-white/20 rounded-full hover:bg-white/20 transition-all duration-300 group"
+                    disabled={isTransitioning}
+                  >
+                    <ChevronLeft className="h-6 w-6 text-white group-hover:scale-110 transition-transform" />
+                  </button>
+                  
+                  <button
+                    onClick={() => { stopAutoPlay(); nextSlide(); }}
+                    className="absolute right-4 top-1/2 -translate-y-1/2 z-50 p-3 bg-white/10 backdrop-blur-sm border border-white/20 rounded-full hover:bg-white/20 transition-all duration-300 group"
+                    disabled={isTransitioning}
+                  >
+                    <ChevronRight className="h-6 w-6 text-white group-hover:scale-110 transition-transform" />
+                  </button>
 
-                {/* Carousel Container */}
-                <div 
-                  className="relative h-80 flex items-center justify-center perspective-1000"
-                  onTouchStart={handleTouchStart}
-                  onTouchMove={handleTouchMove}
-                  onTouchEnd={handleTouchEnd}
-                >
-                  {updateSections.map((section, index) => {
-                    const IconComponent = section.icon;
-                    const cardStyle = getCardStyle(index);
-                    
-                    return (
-                      <div
-                        key={section.id}
-                        className="absolute w-80 h-72 transition-all duration-500 ease-out cursor-pointer"
-                        style={cardStyle}
-                        onClick={() => { stopAutoPlay(); goToSlide(index); }}
-                      >
-                        <Card className="h-full bg-white/10 backdrop-blur-md border-white/20 hover:bg-white/15 transition-all duration-300 shadow-2xl">
-                          <CardContent className="p-6 h-full flex flex-col justify-between">
-                            <div>
-                              <div className="flex items-start gap-4 mb-4">
-                                <div className="p-3 bg-tech-blue/30 rounded-lg backdrop-blur-sm">
-                                  <IconComponent className="h-6 w-6 text-white" />
+                  {/* Carousel Container */}
+                  <div 
+                    className="relative h-80 flex items-center justify-center perspective-1000"
+                    onTouchStart={handleTouchStart}
+                    onTouchMove={handleTouchMove}
+                    onTouchEnd={handleTouchEnd}
+                  >
+                    {updateSections.map((section, index) => {
+                      const IconComponent = section.icon;
+                      const cardStyle = getCardStyle(index);
+                      
+                      return (
+                        <div
+                          key={section.id}
+                          className="absolute w-80 h-72 transition-all duration-500 ease-out cursor-pointer"
+                          style={cardStyle}
+                          onClick={() => { stopAutoPlay(); goToSlide(index); }}
+                        >
+                          <Card className="h-full bg-white/10 backdrop-blur-md border-white/20 hover:bg-white/15 transition-all duration-300 shadow-2xl">
+                            <CardContent className="p-6 h-full flex flex-col justify-between">
+                              <div>
+                                <div className="flex items-start gap-4 mb-4">
+                                  <div className="p-3 bg-tech-blue/30 rounded-lg backdrop-blur-sm">
+                                    <IconComponent className="h-6 w-6 text-white" />
+                                  </div>
+                                  <div className="flex-1">
+                                    <h3 className="text-xl font-bold text-white mb-2">{section.title}</h3>
+                                    <p className="text-white/80 mb-3 text-sm">{section.subtitle}</p>
+                                  </div>
                                 </div>
-                                <div className="flex-1">
-                                  <h3 className="text-xl font-bold text-white mb-2">{section.title}</h3>
-                                  <p className="text-white/80 mb-3 text-sm">{section.subtitle}</p>
-                                </div>
+                                <p className="text-white/70 text-sm mb-4 line-clamp-3">{section.description}</p>
                               </div>
-                              <p className="text-white/70 text-sm mb-4 line-clamp-3">{section.description}</p>
-                            </div>
-                            
-                            <div className="flex items-center justify-between mt-auto">
-                              <span className="text-tech-blue text-sm font-medium bg-tech-blue/20 px-3 py-1 rounded-full">
-                                {section.stats}
-                              </span>
-                              <Button 
-                                variant="outline" 
-                                size="sm" 
-                                className="text-black bg-white border-white/30 hover:bg-gray-200 hover:text-black backdrop-blur-sm font-medium" 
-                                asChild
-                              >
-                                <Link to={section.link} className="flex items-center">
-                                  Explore <ChevronRight size={16} className="ml-1" />
-                                </Link>
-                              </Button>
-                            </div>
-                          </CardContent>
-                        </Card>
-                      </div>
-                    );
-                  })}
-                </div>
+                              
+                              <div className="flex items-center justify-between mt-auto">
+                                <span className="text-tech-blue text-sm font-medium bg-tech-blue/20 px-3 py-1 rounded-full">
+                                  {section.stats}
+                                </span>
+                                <Button 
+                                  variant="outline" 
+                                  size="sm" 
+                                  className="text-black bg-white border-white/30 hover:bg-gray-200 hover:text-black backdrop-blur-sm font-medium" 
+                                  asChild
+                                >
+                                  <Link to={section.link} className="flex items-center">
+                                    Explore <ChevronRight size={16} className="ml-1" />
+                                  </Link>
+                                </Button>
+                              </div>
+                            </CardContent>
+                          </Card>
+                        </div>
+                      );
+                    })}
+                  </div>
 
-                {/* Slide Indicators */}
-                <div className="flex justify-center mt-8 space-x-2">
-                  {updateSections.map((_, index) => (
-                    <button
-                      key={index}
-                      onClick={() => { stopAutoPlay(); goToSlide(index); }}
-                      className={`h-2 rounded-full transition-all duration-300 ${
-                        index === currentIndex ? 'w-8 bg-tech-blue' : 'w-2 bg-gray-400'
-                      }`}
-                      aria-label={`Go to slide ${index + 1}`}
-                    />
-                  ))}
+                  {/* Slide Indicators */}
+                  <div className="flex justify-center mt-8 space-x-2">
+                    {updateSections.map((_, index) => (
+                      <button
+                        key={index}
+                        onClick={() => { stopAutoPlay(); goToSlide(index); }}
+                        className={`h-2 rounded-full transition-all duration-300 ${
+                          index === currentIndex ? 'w-8 bg-tech-blue' : 'w-2 bg-gray-400'
+                        }`}
+                        aria-label={`Go to slide ${index + 1}`}
+                      />
+                    ))}
+                  </div>
                 </div>
-              </div>
+              </ScrollAnimation>
             </div>
           </div>
         </section>
@@ -306,29 +308,33 @@ const Updates = () => {
         {/* Quick Links Section */}
         <section className="py-16 bg-white">
           <div className="container mx-auto px-4">
-            <h2 className="text-3xl font-bold text-center mb-12">Explore All Updates</h2>
+            <ScrollAnimation direction="up" className="text-center mb-12">
+              <h2 className="text-3xl font-bold">Explore All Updates</h2>
+            </ScrollAnimation>
             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
-              {updateSections.map((section) => {
+              {updateSections.map((section, index) => {
                 const IconComponent = section.icon;
                 return (
-                  <Card key={section.id} className="group hover:shadow-lg transition-all duration-300 hover:-translate-y-1">
-                    <CardContent className="p-6 text-center">
-                      <div className="p-4 bg-tech-blue/10 rounded-full w-16 h-16 mx-auto mb-4 flex items-center justify-center group-hover:bg-tech-blue/20 transition-colors">
-                        <IconComponent className="h-8 w-8 text-tech-blue" />
-                      </div>
-                      <h3 className="text-lg font-bold mb-2">{section.title}</h3>
-                      <p className="text-gray-600 text-sm mb-4">{section.subtitle}</p>
-                      <p className="text-tech-blue text-sm font-medium mb-4">{section.stats}</p>
-                      <Button 
-                        className="w-full bg-tech-blue hover:bg-tech-accent" 
-                        asChild
-                      >
-                        <Link to={section.link}>
-                          View All
-                        </Link>
-                      </Button>
-                    </CardContent>
-                  </Card>
+                  <ScrollAnimation key={section.id} direction="up" delay={index * 100}>
+                    <Card className="group hover:shadow-lg transition-all duration-300 hover:-translate-y-1">
+                      <CardContent className="p-6 text-center">
+                        <div className="p-4 bg-tech-blue/10 rounded-full w-16 h-16 mx-auto mb-4 flex items-center justify-center group-hover:bg-tech-blue/20 transition-colors">
+                          <IconComponent className="h-8 w-8 text-tech-blue" />
+                        </div>
+                        <h3 className="text-lg font-bold mb-2">{section.title}</h3>
+                        <p className="text-gray-600 text-sm mb-4">{section.subtitle}</p>
+                        <p className="text-tech-blue text-sm font-medium mb-4">{section.stats}</p>
+                        <Button 
+                          className="w-full bg-tech-blue hover:bg-tech-accent" 
+                          asChild
+                        >
+                          <Link to={section.link}>
+                            View All
+                          </Link>
+                        </Button>
+                      </CardContent>
+                    </Card>
+                  </ScrollAnimation>
                 );
               })}
             </div>

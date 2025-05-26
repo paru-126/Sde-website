@@ -7,6 +7,7 @@ import CompanyProfile from "@/components/about/CompanyProfile";
 import TeamSection from "@/components/about/TeamSection";
 import CoreValues from "@/components/about/CoreValues";
 import Manufacturing from "@/components/about/Manufacturing";
+import ScrollAnimation from "@/components/ui/scroll-animation";
 
 const About = () => {
   const location = useLocation();
@@ -34,19 +35,32 @@ const About = () => {
     <>
       <Navbar />
       <main className="pt-20">
-        <div className="hero-gradient text-white py-16 md:py-24">
-          <div className="container mx-auto px-4">
-            <h1 className="text-4xl md:text-5xl font-bold mb-4">About ElectroTech</h1>
-            <p className="text-xl max-w-3xl">
-              Leading the industry with innovative electronic solutions and a commitment to excellence.
-            </p>
+        <ScrollAnimation direction="fade">
+          <div className="hero-gradient text-white py-16 md:py-24">
+            <div className="container mx-auto px-4">
+              <h1 className="text-4xl md:text-5xl font-bold mb-4">About ElectroTech</h1>
+              <p className="text-xl max-w-3xl">
+                Leading the industry with innovative electronic solutions and a commitment to excellence.
+              </p>
+            </div>
           </div>
-        </div>
+        </ScrollAnimation>
         
-        <CompanyProfile />
-        <TeamSection />
-        <CoreValues />
-        <Manufacturing />
+        <ScrollAnimation direction="up" delay={100}>
+          <CompanyProfile />
+        </ScrollAnimation>
+        
+        <ScrollAnimation direction="up" delay={200}>
+          <TeamSection />
+        </ScrollAnimation>
+        
+        <ScrollAnimation direction="up" delay={300}>
+          <CoreValues />
+        </ScrollAnimation>
+        
+        <ScrollAnimation direction="up" delay={400}>
+          <Manufacturing />
+        </ScrollAnimation>
       </main>
       <Footer />
     </>

@@ -91,3 +91,21 @@
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
 }
+
+/* Additional scroll animation utilities */
+.perspective-1000 {
+  perspective: 1000px;
+}
+
+/* Custom duration classes for smooth animations */
+.duration-600 {
+  transition-duration: 600ms;
+}
+
+.duration-800 {
+  transition-duration: 800ms;
+}
+
+.duration-1000 {
+  transition-duration: 1000ms;
+}
