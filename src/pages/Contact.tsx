@@ -28,7 +28,7 @@ const Contact = () => {
                 </div>
                 <h1 className="text-4xl md:text-5xl font-bold mb-6">Get in Touch</h1>
                 <p className="text-xl mb-8">
-                  Have questions about our products or services? Our team is here to help you find the right solutions for your needs.
+                  Have questions about our products or services? Our team at Sri Datta Electronics is here to help you find the right solutions for your needs.
                 </p>
               </div>
             </div>
@@ -92,9 +92,9 @@ const Contact = () => {
               <h2 className="text-3xl font-bold text-center mb-8">Find Us</h2>
               <Map 
                 markers={[
-                  { position: [-122.1697, 37.4275], title: "ElectroTech HQ - Silicon Valley" },
-                  { position: [11.5820, 48.1351], title: "ElectroTech Europe - Munich" },
-                  { position: [103.8198, 1.3521], title: "ElectroTech Asia - Singapore" }
+                  { position: [-122.1697, 37.4275], title: "Sri Datta Electronics HQ - Silicon Valley" },
+                  { position: [11.5820, 48.1351], title: "Sri Datta Electronics Europe - Munich" },
+                  { position: [103.8198, 1.3521], title: "Sri Datta Electronics Asia - Singapore" }
                 ]}
                 zoom={2}
                 center={[-30, 20]}

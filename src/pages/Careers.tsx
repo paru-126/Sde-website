@@ -38,7 +38,7 @@ const Careers = () => {
                 </div>
                 <h1 className="text-4xl md:text-5xl font-bold mb-6">Join Our Team of Innovators</h1>
                 <p className="text-xl mb-8">
-                  At ElectroTech, we're looking for talented individuals who are passionate about pushing the boundaries of what's possible in electronics.
+                  At Sri Datta Electronics, we're looking for talented individuals who are passionate about pushing the boundaries of what's possible in electronics.
                 </p>
                 <div className="flex flex-col sm:flex-row gap-4">
                   <Button 

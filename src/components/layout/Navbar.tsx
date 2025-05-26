@@ -1,3 +1,4 @@
+
 import { useState, useEffect } from 'react';
 import { Link, useLocation } from 'react-router-dom';
 import { Menu, X, ChevronDown } from 'lucide-react';
@@ -110,8 +111,13 @@ const Navbar = () => {
       <div className="container mx-auto px-4">
         <div className="flex items-center justify-between">
           {/* Logo */}
-          <Link to="/" className="flex items-center">
-            <span className="text-2xl font-bold text-white">Electro<span className="text-tech-blue">Tech</span></span>
+          <Link to="/" className="flex items-center space-x-3">
+            <img 
+              src="/lovable-uploads/c8630fe3-a8e7-4961-b26c-ca61ce877cd6.png" 
+              alt="Sri Datta Electronics Logo" 
+              className="h-10 w-10 object-contain"
+            />
+            <span className="text-xl font-bold text-white">Sri Datta <span className="text-tech-blue">Electronics</span></span>
           </Link>
 
           {/* Desktop Navigation */}

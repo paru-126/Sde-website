@@ -38,7 +38,7 @@ const About = () => {
         <ScrollAnimation direction="fade">
           <div className="hero-gradient text-white py-16 md:py-24">
             <div className="container mx-auto px-4">
-              <h1 className="text-4xl md:text-5xl font-bold mb-4">About ElectroTech</h1>
+              <h1 className="text-4xl md:text-5xl font-bold mb-4">About Sri Datta Electronics</h1>
               <p className="text-xl max-w-3xl">
                 Leading the industry with innovative electronic solutions and a commitment to excellence.
               </p>
