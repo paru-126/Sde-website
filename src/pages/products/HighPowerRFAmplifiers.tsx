@@ -76,66 +76,23 @@ const HighPowerRFAmplifiers = () => {
                   <CardContent className="p-6">
                     <Zap className="mx-auto mb-4 text-tech-blue" size={48} />
                     <h4 className="text-lg font-semibold mb-2">High Output Power</h4>
-                    <p className="text-gray-600">Exceptional power output capabilities for long-range applications</p>
+                    <p className="text-gray-600">Up to 1000W power output capabilities</p>
                   </CardContent>
                 </Card>
                 <Card className="text-center">
                   <CardContent className="p-6">
                     <Radio className="mx-auto mb-4 text-tech-blue" size={48} />
                     <h4 className="text-lg font-semibold mb-2">Wide Frequency Range</h4>
-                    <p className="text-gray-600">Support for multiple frequency bands and applications</p>
+                    <p className="text-gray-600">1 MHz - 18 GHz frequency support</p>
                   </CardContent>
                 </Card>
                 <Card className="text-center">
                   <CardContent className="p-6">
-                    <Cpu className="mx-auto mb-4 text-tech-blue" size={48} />
-                    <h4 className="text-lg font-semibold mb-2">Excellent Linearity</h4>
-                    <p className="text-gray-600">Superior signal integrity and low distortion characteristics</p>
+                    <CheckCircle className="mx-auto mb-4 text-tech-blue" size={48} />
+                    <h4 className="text-lg font-semibold mb-2">High Efficiency</h4>
+                    <p className="text-gray-600">{'>'}85% efficiency with excellent linearity</p>
                   </CardContent>
                 </Card>
-              </div>
-            </ScrollAnimation>
-
-            {/* Technical Specifications */}
-            <ScrollAnimation direction="up" className="mb-16">
-              <div className="bg-white rounded-lg p-8 shadow-lg">
-                <h3 className="text-2xl font-bold mb-6">Technical Specifications</h3>
-                <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
-                  <div>
-                    <h4 className="text-lg font-semibold mb-4">Performance</h4>
-                    <ul className="space-y-2">
-                      <li className="flex items-center gap-2">
-                        <CheckCircle size={16} className="text-green-500" />
-                        <span>Power Output: Up to 1000W</span>
-                      </li>
-                      <li className="flex items-center gap-2">
-                        <CheckCircle size={16} className="text-green-500" />
-                        <span>Frequency Range: 1 MHz - 18 GHz</span>
-                      </li>
-                      <li className="flex items-center gap-2">
-                        <CheckCircle size={16} className="text-green-500" />
-                        <span>Efficiency: {'>'}85%</span>
-                      </li>
-                    </ul>
-                  </div>
-                  <div>
-                    <h4 className="text-lg font-semibold mb-4">Reliability</h4>
-                    <ul className="space-y-2">
-                      <li className="flex items-center gap-2">
-                        <CheckCircle size={16} className="text-green-500" />
-                        <span>MTBF: {'>'} 50,000 hours</span>
-                      </li>
-                      <li className="flex items-center gap-2">
-                        <CheckCircle size={16} className="text-green-500" />
-                        <span>MIL-STD qualified</span>
-                      </li>
-                      <li className="flex items-center gap-2">
-                        <CheckCircle size={16} className="text-green-500" />
-                        <span>24/7 operation capable</span>
-                      </li>
-                    </ul>
-                  </div>
-                </div>
               </div>
             </ScrollAnimation>
 

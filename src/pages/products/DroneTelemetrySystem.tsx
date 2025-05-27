@@ -49,12 +49,11 @@ const DroneTelemetrySystem = () => {
                   <h2 className="text-3xl font-bold mb-6">Advanced Drone Tracking</h2>
                   <p className="text-gray-600 mb-6">
                     We provide Drone-based Telemetry Tracking systems specifically designed for low altitude 
-                    missile programs. Our systems track missiles and provide real-time video data streaming, 
-                    offering comprehensive situational awareness for defense applications.
+                    missile programs. Our systems track missiles and provide real-time video data streaming.
                   </p>
                   <p className="text-gray-600 mb-6">
                     Currently enhancing tracking capabilities and wireless communication in the field of 
-                    real-time telemetry tracking and video transmission for several Defense projects.
+                    real-time telemetry tracking and video transmission for Defense projects.
                   </p>
                 </div>
               </ScrollAnimation>
@@ -76,66 +75,23 @@ const DroneTelemetrySystem = () => {
                   <CardContent className="p-6">
                     <Radio className="mx-auto mb-4 text-tech-blue" size={48} />
                     <h4 className="text-lg font-semibold mb-2">Long-range Communication</h4>
-                    <p className="text-gray-600">Extended range capabilities for comprehensive mission coverage</p>
+                    <p className="text-gray-600">Extended range for comprehensive mission coverage</p>
                   </CardContent>
                 </Card>
                 <Card className="text-center">
                   <CardContent className="p-6">
                     <Zap className="mx-auto mb-4 text-tech-blue" size={48} />
                     <h4 className="text-lg font-semibold mb-2">Low Power Consumption</h4>
-                    <p className="text-gray-600">Optimized power management for extended flight operations</p>
+                    <p className="text-gray-600">Optimized for extended flight operations</p>
                   </CardContent>
                 </Card>
                 <Card className="text-center">
                   <CardContent className="p-6">
-                    <Plane className="mx-auto mb-4 text-tech-blue" size={48} />
-                    <h4 className="text-lg font-semibold mb-2">Compact Form Factor</h4>
-                    <p className="text-gray-600">Lightweight design suitable for various drone platforms</p>
+                    <CheckCircle className="mx-auto mb-4 text-tech-blue" size={48} />
+                    <h4 className="text-lg font-semibold mb-2">Real-time Video Streaming</h4>
+                    <p className="text-gray-600">Live video data transmission and tracking</p>
                   </CardContent>
                 </Card>
-              </div>
-            </ScrollAnimation>
-
-            {/* Applications */}
-            <ScrollAnimation direction="up" className="mb-16">
-              <div className="bg-white rounded-lg p-8 shadow-lg">
-                <h3 className="text-2xl font-bold mb-6">Mission Applications</h3>
-                <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
-                  <div>
-                    <h4 className="text-lg font-semibold mb-4">Defense Applications</h4>
-                    <ul className="space-y-2">
-                      <li className="flex items-center gap-2">
-                        <CheckCircle size={16} className="text-green-500" />
-                        <span>Low Altitude Missile Tracking</span>
-                      </li>
-                      <li className="flex items-center gap-2">
-                        <CheckCircle size={16} className="text-green-500" />
-                        <span>Real-time Video Data Streaming</span>
-                      </li>
-                      <li className="flex items-center gap-2">
-                        <CheckCircle size={16} className="text-green-500" />
-                        <span>Surveillance Operations</span>
-                      </li>
-                    </ul>
-                  </div>
-                  <div>
-                    <h4 className="text-lg font-semibold mb-4">Technical Capabilities</h4>
-                    <ul className="space-y-2">
-                      <li className="flex items-center gap-2">
-                        <CheckCircle size={16} className="text-green-500" />
-                        <span>Enhanced Tracking Capabilities</span>
-                      </li>
-                      <li className="flex items-center gap-2">
-                        <CheckCircle size={16} className="text-green-500" />
-                        <span>Wireless Communication Systems</span>
-                      </li>
-                      <li className="flex items-center gap-2">
-                        <CheckCircle size={16} className="text-green-500" />
-                        <span>Real-time Data Processing</span>
-                      </li>
-                    </ul>
-                  </div>
-                </div>
               </div>
             </ScrollAnimation>
 

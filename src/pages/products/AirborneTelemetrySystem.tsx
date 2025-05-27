@@ -49,8 +49,7 @@ const AirborneTelemetrySystem = () => {
                   <h2 className="text-3xl font-bold mb-6">Advanced Flight Telemetry</h2>
                   <p className="text-gray-600 mb-6">
                     Our Airborne Telemetry Systems are engineered for high-performance aircraft and UAV applications, 
-                    providing reliable data transmission in challenging flight environments. These systems deliver 
-                    exceptional performance while maintaining compact form factors suitable for various aircraft platforms.
+                    providing reliable data transmission in challenging flight environments.
                   </p>
                   <p className="text-gray-600 mb-6">
                     Designed to withstand extreme flight conditions including high G-forces, temperature variations, 
@@ -76,66 +75,23 @@ const AirborneTelemetrySystem = () => {
                   <CardContent className="p-6">
                     <Zap className="mx-auto mb-4 text-tech-blue" size={48} />
                     <h4 className="text-lg font-semibold mb-2">Lightweight Design</h4>
-                    <p className="text-gray-600">Optimized for minimal weight impact on aircraft performance</p>
+                    <p className="text-gray-600">Under 2kg for minimal aircraft impact</p>
                   </CardContent>
                 </Card>
                 <Card className="text-center">
                   <CardContent className="p-6">
                     <Radio className="mx-auto mb-4 text-tech-blue" size={48} />
                     <h4 className="text-lg font-semibold mb-2">High Data Throughput</h4>
-                    <p className="text-gray-600">Superior data transmission rates for real-time monitoring</p>
+                    <p className="text-gray-600">Up to 50 Mbps data transmission rates</p>
                   </CardContent>
                 </Card>
                 <Card className="text-center">
                   <CardContent className="p-6">
-                    <Plane className="mx-auto mb-4 text-tech-blue" size={48} />
-                    <h4 className="text-lg font-semibold mb-2">Multi-channel Capability</h4>
-                    <p className="text-gray-600">Support for multiple data streams and sensor inputs</p>
+                    <CheckCircle className="mx-auto mb-4 text-tech-blue" size={48} />
+                    <h4 className="text-lg font-semibold mb-2">Extreme Environment</h4>
+                    <p className="text-gray-600">Operational from -55°C to +85°C</p>
                   </CardContent>
                 </Card>
-              </div>
-            </ScrollAnimation>
-
-            {/* Technical Specifications */}
-            <ScrollAnimation direction="up" className="mb-16">
-              <div className="bg-white rounded-lg p-8 shadow-lg">
-                <h3 className="text-2xl font-bold mb-6">Technical Specifications</h3>
-                <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
-                  <div>
-                    <h4 className="text-lg font-semibold mb-4">Performance</h4>
-                    <ul className="space-y-2">
-                      <li className="flex items-center gap-2">
-                        <CheckCircle size={16} className="text-green-500" />
-                        <span>Weight: Under 2kg</span>
-                      </li>
-                      <li className="flex items-center gap-2">
-                        <CheckCircle size={16} className="text-green-500" />
-                        <span>Data Rate: Up to 50 Mbps</span>
-                      </li>
-                      <li className="flex items-center gap-2">
-                        <CheckCircle size={16} className="text-green-500" />
-                        <span>Range: 200+ km</span>
-                      </li>
-                    </ul>
-                  </div>
-                  <div>
-                    <h4 className="text-lg font-semibold mb-4">Environmental</h4>
-                    <ul className="space-y-2">
-                      <li className="flex items-center gap-2">
-                        <CheckCircle size={16} className="text-green-500" />
-                        <span>G-Force: ±15G operational</span>
-                      </li>
-                      <li className="flex items-center gap-2">
-                        <CheckCircle size={16} className="text-green-500" />
-                        <span>Altitude: Up to 20,000m</span>
-                      </li>
-                      <li className="flex items-center gap-2">
-                        <CheckCircle size={16} className="text-green-500" />
-                        <span>Temperature: -55°C to +85°C</span>
-                      </li>
-                    </ul>
-                  </div>
-                </div>
               </div>
             </ScrollAnimation>
 
