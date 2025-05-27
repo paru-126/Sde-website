@@ -40,7 +40,7 @@ const productCategories: ProductCategory[] = [
   },
   {
     id: 'integration',
-    name: 'Integration & System Solutions',
+    name: 'Integration & Sub Systems',
     icon: Cpu,
     color: 'bg-green-500'
   },
