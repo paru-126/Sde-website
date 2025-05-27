@@ -3,7 +3,7 @@ import Navbar from "@/components/layout/Navbar";
 import Footer from "@/components/layout/Footer";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent } from "@/components/ui/card";
-import { Drone, CheckCircle, Radio, Zap } from "lucide-react";
+import { Plane, CheckCircle, Radio, Zap } from "lucide-react";
 import ScrollAnimation from "@/components/ui/scroll-animation";
 
 const DroneTelemetrySystem = () => {
@@ -26,7 +26,7 @@ const DroneTelemetrySystem = () => {
             <div className="max-w-4xl">
               <ScrollAnimation direction="fade" className="mb-8">
                 <div className="inline-flex items-center gap-2 text-tech-blue mb-4">
-                  <Drone size={20} />
+                  <Plane size={20} />
                   <span className="uppercase tracking-wider text-sm font-semibold">UAV Systems</span>
                 </div>
                 <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold text-white mb-6">
@@ -88,7 +88,7 @@ const DroneTelemetrySystem = () => {
                 </Card>
                 <Card className="text-center">
                   <CardContent className="p-6">
-                    <Drone className="mx-auto mb-4 text-tech-blue" size={48} />
+                    <Plane className="mx-auto mb-4 text-tech-blue" size={48} />
                     <h4 className="text-lg font-semibold mb-2">Compact Form Factor</h4>
                     <p className="text-gray-600">Lightweight design suitable for various drone platforms</p>
                   </CardContent>

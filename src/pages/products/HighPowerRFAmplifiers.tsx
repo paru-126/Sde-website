@@ -114,7 +114,7 @@ const HighPowerRFAmplifiers = () => {
                       </li>
                       <li className="flex items-center gap-2">
                         <CheckCircle size={16} className="text-green-500" />
-                        <span>Efficiency: >85%</span>
+                        <span>Efficiency: {'>'}85%</span>
                       </li>
                     </ul>
                   </div>
@@ -123,7 +123,7 @@ const HighPowerRFAmplifiers = () => {
                     <ul className="space-y-2">
                       <li className="flex items-center gap-2">
                         <CheckCircle size={16} className="text-green-500" />
-                        <span>MTBF: >50,000 hours</span>
+                        <span>MTBF: {'>'} 50,000 hours</span>
                       </li>
                       <li className="flex items-center gap-2">
                         <CheckCircle size={16} className="text-green-500" />
