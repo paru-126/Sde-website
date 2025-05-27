@@ -64,7 +64,7 @@ const FocusedMarket = () => {
                   href="https://lumi-star.com/contact/international-reps/" 
                   target="_blank" 
                   rel="noopener noreferrer"
-                  className="text-tech-accent hover:underline"
+                  className="text-yellow-300 hover:underline"
                 >
                   Visit Partner
                 </a>
@@ -81,24 +81,6 @@ const FocusedMarket = () => {
                 systems. As L3 Communications has completely closed the Telemetry group, now Sri Datta 
                 Electronics is representing Lumistar Inc, USA from 2019.
               </p>
-            </div>
-          </div>
-        </div>
-
-        {/* Contact Information */}
-        <div className="mt-12 bg-tech-black text-white p-8 rounded-lg">
-          <h3 className="text-xl font-bold mb-4 text-center">Contact Information</h3>
-          <div className="text-center space-y-2">
-            <p>FLAT NO:201, CHAITYANYA CHAMBERS, SAI NAGAR, CHAITANYAPURI, HYDERABAD-500060</p>
-            <div className="flex flex-wrap justify-center gap-4 text-sm">
-              <span>Tel: 040-35868174</span>
-              <span>Fax: 040-49541605</span>
-              <span>Email: sales@sridattaelectronics.com</span>
-            </div>
-            <div className="flex flex-wrap justify-center gap-4 text-sm text-tech-accent">
-              <span>CIN: U31909TG2021PTC152171</span>
-              <span>PAN: ABGCS2174P</span>
-              <span>GSTIN: 36ABGCS2174P1ZR</span>
             </div>
           </div>
         </div>

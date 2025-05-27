@@ -1,111 +1,178 @@
-
 import { Link } from "react-router-dom";
-import { Mail, Phone, MapPin, Facebook, Twitter, Linkedin, Instagram } from "lucide-react";
+import { Mail, Phone, MapPin, Linkedin, ArrowRight, ExternalLink } from "lucide-react";
 
 const Footer = () => {
   return (
-    <footer className="bg-tech-black text-white pt-16 pb-8">
-      <div className="container mx-auto px-4">
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
-          {/* Company Info */}
-          <div>
-            <Link to="/" className="inline-block mb-4">
-              <span className="text-2xl font-bold">Electro<span className="text-tech-blue">Tech</span></span>
-            </Link>
-            <p className="text-gray-400 mb-4">
-              Leading the industry in innovative electronic solutions for over two decades. Quality, reliability, and cutting-edge technology define our commitment.
+    <footer className="relative bg-gradient-to-br from-slate-900 via-slate-800 to-slate-900 text-white overflow-hidden">
+      {/* Background Pattern */}
+      <div className="absolute inset-0 opacity-5">
+        <div className="absolute inset-0" style={{
+          backgroundImage: `radial-gradient(circle at 1px 1px, rgba(59, 130, 246, 0.3) 1px, transparent 0)`,
+          backgroundSize: '20px 20px'
+        }}></div>
+      </div>
+      
+      {/* Gradient Overlay */}
+      <div className="absolute inset-0 bg-gradient-to-t from-slate-900/50 to-transparent"></div>
+      
+      <div className="relative container mx-auto px-6 pt-20 pb-8">
+        {/* Main Content */}
+        <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 mb-16">
+          {/* Company Brand Section */}
+          <div className="lg:col-span-5">
+            <div className="mb-8">
+              <Link to="/" className="inline-flex items-center group">
+                <div className="relative">
+                  <div className="absolute inset-0 bg-blue-500/20 rounded-full blur-xl group-hover:bg-blue-500/30 transition-all duration-300"></div>
+                  <img 
+                    src="https://drive.google.com/thumbnail?id=1OyvUSlaxgDqGS5lRgps0egCBp8182rXc"
+                    alt="Sri Datta Electronics Logo" 
+                    referrerPolicy="no-referrer"
+                    className="relative h-14 w-14 object-contain rounded-full border-2 border-blue-500/50 group-hover:border-blue-400 transition-all duration-300"
+                  />
+                </div>
+                <div className="ml-4">
+                  <h2 className="text-2xl font-bold text-white group-hover:text-blue-400 transition-colors duration-300">
+                    Sri Datta <span className="text-blue-400">Electronics</span>
+                  </h2>
+                  <p className="text-sm text-slate-400 mt-1">
+                    Defense & Aerospace Solutions
+                  </p>
+                </div>
+              </Link>
+            </div>
+            
+            <p className="text-slate-300 text-lg leading-relaxed mb-8 max-w-md">
+              Leading the industry in innovative electronic solutions for defense and aerospace applications with cutting-edge technology and unmatched reliability.
             </p>
-            <div className="flex space-x-4">
-              <a href="#" className="text-gray-400 hover:text-tech-blue transition-colors">
-                <Facebook size={20} />
-              </a>
-              <a href="#" className="text-gray-400 hover:text-tech-blue transition-colors">
-                <Twitter size={20} />
-              </a>
-              <a href="#" className="text-gray-400 hover:text-tech-blue transition-colors">
-                <Linkedin size={20} />
-              </a>
-              <a href="#" className="text-gray-400 hover:text-tech-blue transition-colors">
-                <Instagram size={20} />
-              </a>
+
+            {/* DMV Brand */}
+            <div className="p-6 bg-gradient-to-r from-slate-800/50 to-slate-700/30 rounded-2xl border border-slate-700/50 backdrop-blur-sm">
+              <Link to="/" className="flex items-center group">
+                <div className="relative">
+                  <div className="absolute inset-0 bg-blue-500/20 rounded-full blur-lg group-hover:bg-blue-500/30 transition-all duration-300"></div>
+                  <img 
+                    src="https://drive.google.com/thumbnail?id=1OyvUSlaxgDqGS5lRgps0egCBp8182rXc"
+                    alt="Sri Datta DMV Logo" 
+                    referrerPolicy="no-referrer"
+                    className="relative h-12 w-12 object-contain rounded-full border-2 border-blue-500/50"
+                  />
+                </div>
+                <div className="ml-4">
+                  <h3 className="text-xl font-bold text-white group-hover:text-blue-400 transition-colors duration-300">
+                    Sri Datta <span className="text-blue-400">DMV</span>
+                  </h3>
+                  <p className="text-sm text-slate-400 mt-1">
+                    Empowering electronics innovation — from design to distribution
+                  </p>
+                </div>
+              </Link>
             </div>
           </div>
 
-          {/* Quick Links */}
-          <div>
-            <h3 className="text-xl font-semibold mb-4">Quick Links</h3>
-            <ul className="space-y-2">
-              <li>
-                <Link to="/about" className="text-gray-400 hover:text-tech-blue transition-colors">About Us</Link>
-              </li>
-              <li>
-                <Link to="/about#team" className="text-gray-400 hover:text-tech-blue transition-colors">Our Team</Link>
-              </li>
-              <li>
-                <Link to="/about#values" className="text-gray-400 hover:text-tech-blue transition-colors">Core Values</Link>
-              </li>
-              <li>
-                <Link to="/about#manufacturing" className="text-gray-400 hover:text-tech-blue transition-colors">Manufacturing</Link>
-              </li>
-              <li>
-                <Link to="/careers" className="text-gray-400 hover:text-tech-blue transition-colors">Careers</Link>
-              </li>
-              <li>
-                <Link to="/contact" className="text-gray-400 hover:text-tech-blue transition-colors">Contact Us</Link>
-              </li>
-            </ul>
-          </div>
+          {/* Links Grid */}
+          <div className="lg:col-span-7 grid grid-cols-1 md:grid-cols-3 gap-8">
+            {/* Quick Links */}
+            <div>
+              <h3 className="text-xl font-semibold text-white mb-6 relative">
+                Quick Links
+                <div className="absolute bottom-0 left-0 w-12 h-0.5 bg-gradient-to-r from-blue-500 to-cyan-500 rounded-full"></div>
+              </h3>
+              <ul className="space-y-3">
+                {[
+                  { to: "/", label: "Home" },
+                  { to: "/about", label: "About" },
+                  { to: "/contact", label: "Contact" },
+                  { to: "/updates", label: "Products" }
+                ].map((link) => (
+                  <li key={link.to}>
+                    <Link 
+                      to={link.to} 
+                      className="group flex items-center text-slate-400 hover:text-blue-400 transition-all duration-300"
+                    >
+                      <ArrowRight size={14} className="mr-2 opacity-0 group-hover:opacity-100 transform -translate-x-2 group-hover:translate-x-0 transition-all duration-300" />
+                      <span className="group-hover:translate-x-1 transition-transform duration-300">{link.label}</span>
+                    </Link>
+                  </li>
+                ))}
+              </ul>
+            </div>
 
-          {/* Updates */}
-          <div>
-            <h3 className="text-xl font-semibold mb-4">Updates</h3>
-            <ul className="space-y-2">
-              <li>
-                <Link to="/updates/news" className="text-gray-400 hover:text-tech-blue transition-colors">In News</Link>
-              </li>
-              <li>
-                <Link to="/updates/references" className="text-gray-400 hover:text-tech-blue transition-colors">References</Link>
-              </li>
-              <li>
-                <Link to="/updates/events" className="text-gray-400 hover:text-tech-blue transition-colors">Events</Link>
-              </li>
-              <li>
-                <Link to="/updates/blog" className="text-gray-400 hover:text-tech-blue transition-colors">Blog</Link>
-              </li>
-            </ul>
-          </div>
+            {/* Products */}
+            <div>
+              <h3 className="text-xl font-semibold text-white mb-6 relative">
+                Products
+                <div className="absolute bottom-0 left-0 w-12 h-0.5 bg-gradient-to-r from-cyan-500 to-teal-500 rounded-full"></div>
+              </h3>
+              <ul className="space-y-3">
+                {[
+                  { to: "/updates#telemetry", label: "Telemetry Systems" },
+                  { to: "/updates#integration", label: "Integration Solutions" },
+                  { to: "/updates#mil-infrastructure", label: "MIL-Grade Infrastructure" },
+                  { to: "/updates#services", label: "Services" }
+                ].map((product) => (
+                  <li key={product.to}>
+                    <Link 
+                      to={product.to} 
+                      className="group flex items-center text-slate-400 hover:text-cyan-400 transition-all duration-300"
+                    >
+                      <ArrowRight size={14} className="mr-2 opacity-0 group-hover:opacity-100 transform -translate-x-2 group-hover:translate-x-0 transition-all duration-300" />
+                      <span className="group-hover:translate-x-1 transition-transform duration-300">{product.label}</span>
+                    </Link>
+                  </li>
+                ))}
+              </ul>
+            </div>
 
-          {/* Contact Info */}
-          <div>
-            <h3 className="text-xl font-semibold mb-4">Contact Info</h3>
-            <ul className="space-y-4">
-              <li className="flex items-start">
-                <MapPin size={20} className="text-tech-blue mr-2 mt-1 flex-shrink-0" />
-                <span className="text-gray-400">123 Tech Boulevard, Innovation District, CA 94103, USA</span>
-              </li>
-              <li className="flex items-center">
-                <Phone size={20} className="text-tech-blue mr-2 flex-shrink-0" />
-                <a href="tel:+1234567890" className="text-gray-400 hover:text-tech-blue transition-colors">+1 (234) 567-890</a>
-              </li>
-              <li className="flex items-center">
-                <Mail size={20} className="text-tech-blue mr-2 flex-shrink-0" />
-                <a href="mailto:info@electrotech.com" className="text-gray-400 hover:text-tech-blue transition-colors">info@electrotech.com</a>
-              </li>
-            </ul>
+            {/* Contact Info */}
+            <div>
+              <h3 className="text-xl font-semibold text-white mb-6 relative">
+                Contact Info
+                <div className="absolute bottom-0 left-0 w-12 h-0.5 bg-gradient-to-r from-teal-500 to-emerald-500 rounded-full"></div>
+              </h3>
+              <ul className="space-y-4">
+                <li className="group">
+                  <div className="flex items-start p-3 rounded-lg hover:bg-slate-800/30 transition-all duration-300">
+                    <MapPin size={20} className="text-blue-400 mr-3 mt-0.5 flex-shrink-0 group-hover:text-blue-300 transition-colors" />
+                    <div className="text-slate-300 text-sm leading-relaxed">
+                      <div className="font-medium">FLAT NO:201, CHAITYANYA CHAMBERS</div>
+                      <div>SAI NAGAR, CHAITANYAPURI</div>
+                      <div>HYDERABAD-500060</div>
+                    </div>
+                  </div>
+                </li>
+                
+                <li className="group">
+                  <div className="flex items-start p-3 rounded-lg hover:bg-slate-800/30 transition-all duration-300">
+                    <Phone size={20} className="text-blue-400 mr-3 mt-0.5 flex-shrink-0 group-hover:text-blue-300 transition-colors" />
+                    <div className="text-slate-300 text-sm">
+                      <div className="font-medium">Tel: 040-35868174</div>
+                      <div>Mobile: +91 9492430198</div>
+                    </div>
+                  </div>
+                </li>
+                
+                <li className="group">
+                  <div className="flex items-start p-3 rounded-lg hover:bg-slate-800/30 transition-all duration-300">
+                    <Mail size={20} className="text-blue-400 mr-3 mt-0.5 flex-shrink-0 group-hover:text-blue-300 transition-colors" />
+                    <a 
+                      href="mailto:sales@sridattaelectronics.com" 
+                      className="text-slate-300 hover:text-blue-400 transition-colors text-sm font-medium"
+                    >
+                      sales@sridattaelectronics.com
+                    </a>
+                  </div>
+                </li>
+                
+                <li className="text-slate-400 text-xs bg-slate-800/20 p-2 rounded border border-slate-700/30">
+                  <span className="font-mono">GSTIN: 36ABGCS2174P1ZR</span>
+                </li>
+              </ul>
+            </div>
           </div>
         </div>
 
-        <hr className="border-gray-800 my-8" />
-
-        <div className="flex flex-col md:flex-row justify-between items-center">
-          <p className="text-gray-400 text-sm mb-4 md:mb-0">
-            &copy; {new Date().getFullYear()} ElectroTech. All rights reserved.
-          </p>
-          <div className="flex space-x-6">
-            <Link to="/privacy-policy" className="text-sm text-gray-400 hover:text-tech-blue transition-colors">Privacy Policy</Link>
-            <Link to="/terms-of-service" className="text-sm text-gray-400 hover:text-tech-blue transition-colors">Terms of Service</Link>
-          </div>
-        </div>
+        
       </div>
     </footer>
   );

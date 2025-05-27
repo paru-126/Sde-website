@@ -22,18 +22,10 @@ const navLinks: NavLinkProps[] = [
     href: '/about',
     children: [
       { title: 'Company Profile', href: '/about#profile' },
-      { title: 'Our Strengths', href: '/about#team' },
-      { title: '', href: '/about#values' },
-      { title: 'Manufacturing', href: '/about#manufacturing' }
+      { title: 'Our Strengths', href: '/about#strengths' },
+      { title: 'Our Vision', href: '/about#vision' },
+      { title: 'Market Focus', href: '/about#market' }
     ]
-  },
-  { 
-    title: 'Careers', 
-    href: '/careers' 
-  },
-  { 
-    title: 'Contact', 
-    href: '/contact' 
   },
   { 
     title: 'Products', 
@@ -44,6 +36,10 @@ const navLinks: NavLinkProps[] = [
       { title: 'MIL-Grade Components & Assemblies', href: '/updates#mil-grade' },
       { title: 'Power & RF Components', href: '/updates#power-rf' }
     ]
+  },
+  { 
+    title: 'Contact', 
+    href: '/contact' 
   }
 ];
 
@@ -107,13 +103,14 @@ const Navbar = () => {
 
   return (
     <header className={getNavbarClasses()}>
-      <div className="container mx-auto px-20"> {/* Increased from px-4 to px-6 */}
+      <div className="container mx-auto px-40"> {/* Increased from px-4 to px-6 */}
         <div className="flex items-center justify-between">
           {/* Logo */}
           <Link to="/" className="flex items-center space-x-3">
             <img 
-              src="/lovable-uploads/316fa14c-e765-438c-bdc7-5118fad8d627.png" 
+              src="https://drive.google.com/thumbnail?id=1OyvUSlaxgDqGS5lRgps0egCBp8182rXc"
               alt="Sri Datta Electronics Logo" 
+              referrerPolicy="no-referrer"
               className="h-10 w-10 object-contain rounded-full"
             />
             <span className="text-xl font-bold text-white">Sri Datta <span className="text-tech-blue">Electronics</span></span>

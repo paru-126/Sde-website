@@ -4,7 +4,7 @@ import Navbar from "@/components/layout/Navbar";
 import Footer from "@/components/layout/Footer";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent } from "@/components/ui/card";
-import { Cpu, Zap, Settings, Shield, Radio, ChevronRight } from "lucide-react";
+import { Cpu, Zap, Settings, Shield, Radio, ChevronRight, Wrench } from "lucide-react";
 import ScrollAnimation from "@/components/ui/scroll-animation";
 
 interface Product {
@@ -45,15 +45,15 @@ const productCategories: ProductCategory[] = [
     color: 'bg-green-500'
   },
   {
-    id: 'mil-grade',
-    name: 'MIL-Grade Components & Assemblies',
+    id: 'mil-infrastructure',
+    name: 'MIL-Grade Electronic Infrastructure',
     icon: Shield,
     color: 'bg-red-500'
   },
   {
-    id: 'power-rf',
-    name: 'Power & RF Components',
-    icon: Zap,
+    id: 'services',
+    name: 'Services',
+    icon: Wrench,
     color: 'bg-purple-500'
   }
 ];
@@ -143,12 +143,12 @@ const products: Product[] = [
     slug: 'rugged-computers-networking'
   },
 
-  // MIL-Grade Components & Assemblies
+  // MIL-Grade Electronic Infrastructure (combined category)
   {
     id: 9,
     name: 'MIL-Grade Missile Cable Assemblies',
     type: 'Cable Systems',
-    category: 'mil-grade',
+    category: 'mil-infrastructure',
     description: 'High-reliability missile cable assemblies meeting military specifications.',
     image: 'https://images.unsplash.com/photo-1581092795360-fd1ca04f0952?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&q=80&w=600',
     specifications: ['MIL-STD-1553', 'High temperature rated', 'EMI/RFI shielding'],
@@ -158,7 +158,7 @@ const products: Product[] = [
     id: 10,
     name: 'MIL-Grade RF Cable Assemblies',
     type: 'RF Cables',
-    category: 'mil-grade',
+    category: 'mil-infrastructure',
     description: 'Precision RF cable assemblies for military and aerospace applications.',
     image: 'https://images.unsplash.com/photo-1581092918056-0c4c3acd3789?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&q=80&w=600',
     specifications: ['Low loss design', 'Phase stable', 'Environmental sealing'],
@@ -168,7 +168,7 @@ const products: Product[] = [
     id: 11,
     name: 'MIL-Grade Connectors',
     type: 'Connectors',
-    category: 'mil-grade',
+    category: 'mil-infrastructure',
     description: 'Comprehensive range of MIL-grade connectors including Micro-D, Nano-D, D-Sub, and Circular.',
     image: 'https://images.unsplash.com/photo-1581093588401-fbb62a02f120?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&q=80&w=600',
     specifications: ['Multiple form factors', 'Gold plated contacts', 'Hermetic sealing'],
@@ -178,19 +178,17 @@ const products: Product[] = [
     id: 12,
     name: 'MIL-Grade DC-DC Converters',
     type: 'Power Conversion',
-    category: 'mil-grade',
+    category: 'mil-infrastructure',
     description: 'High-efficiency DC-DC converters designed for military applications.',
     image: 'https://images.unsplash.com/photo-1581092921461-eab62e97a780?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&q=80&w=600',
     specifications: ['Wide input range', 'High efficiency', 'EMI compliant'],
     slug: 'mil-grade-dc-dc-converters'
   },
-
-  // Power & RF Components
   {
     id: 13,
     name: 'DC Programmable Power Supplies',
     type: 'Power Systems',
-    category: 'power-rf',
+    category: 'mil-infrastructure',
     description: 'Precision DC programmable power supplies for testing and development.',
     image: 'https://images.unsplash.com/photo-1558618047-3c8c76ca7d13?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&q=80&w=600',
     specifications: ['Digital control', 'High precision', 'Remote programming'],
@@ -200,13 +198,17 @@ const products: Product[] = [
     id: 14,
     name: 'RF & Microwave Components',
     type: 'RF Components',
-    category: 'power-rf',
+    category: 'mil-infrastructure',
     description: 'Comprehensive range of RF and microwave components for various applications.',
     image: 'https://images.unsplash.com/photo-1581092795360-fd1ca04f0952?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&q=80&w=600',
     specifications: ['Wide frequency range', 'Low insertion loss', 'High power handling'],
     slug: 'rf-microwave-components'
   }
+
+  // Services category is intentionally left empty as requested
 ];
+
+// ... rest of the component code remains the same ...
 
 const Products = () => {
   const location = useLocation();
@@ -386,35 +388,6 @@ const Products = () => {
                 <p className="text-gray-500 text-lg">No products found in this category.</p>
               </div>
             )}
-          </div>
-        </section>
-
-        {/* Call to Action Section */}
-        <section className="py-16 bg-tech-black text-white">
-          <div className="container mx-auto px-4 text-center">
-            <ScrollAnimation direction="up">
-              <h2 className="text-3xl font-bold mb-4">Need Custom Solutions?</h2>
-              <p className="text-lg text-white/80 mb-8 max-w-2xl mx-auto">
-                Our engineering team can develop customized products to meet your specific requirements.
-              </p>
-              <div className="flex flex-col sm:flex-row gap-4 justify-center">
-                <Button 
-                  size="lg" 
-                  className="bg-tech-blue hover:bg-tech-accent"
-                  asChild
-                >
-                  <Link to="/contact">Request Quote</Link>
-                </Button>
-                <Button 
-                  size="lg" 
-                  variant="outline" 
-                  className="border-white text-white hover:bg-white hover:text-tech-black"
-                  asChild
-                >
-                  <Link to="/contact">Technical Support</Link>
-                </Button>
-              </div>
-            </ScrollAnimation>
           </div>
         </section>
       </main>
