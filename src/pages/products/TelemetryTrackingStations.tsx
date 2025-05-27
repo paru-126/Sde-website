@@ -1,7 +1,6 @@
 
 import Navbar from "@/components/layout/Navbar";
 import Footer from "@/components/layout/Footer";
-import { Button } from "@/components/ui/button";
 import { Card, CardContent } from "@/components/ui/card";
 import { Radio, CheckCircle, Zap } from "lucide-react";
 import ScrollAnimation from "@/components/ui/scroll-animation";
@@ -12,62 +11,27 @@ const TelemetryTrackingStations = () => {
       <Navbar />
       <main className="pt-20">
         {/* Hero Section */}
-        <section className="relative h-96 overflow-hidden bg-gradient-to-r from-tech-black to-tech-accent">
-          <div className="absolute inset-0">
-            <div className="absolute inset-0 bg-gradient-to-r from-tech-black/90 to-tech-black/70 z-10" />
-            <img
-              src="https://images.unsplash.com/photo-1518709268805-4e9042af2176?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&q=80&w=1920"
-              alt="Telemetry Tracking Stations"
-              className="w-full h-full object-cover"
-            />
-          </div>
-
-          <div className="container mx-auto px-4 h-full flex items-center relative z-20">
-            <div className="max-w-4xl">
-              <ScrollAnimation direction="fade" className="mb-8">
-                <div className="inline-flex items-center gap-2 text-tech-blue mb-4">
-                  <Radio size={20} />
-                  <span className="uppercase tracking-wider text-sm font-semibold">Telemetry Systems</span>
-                </div>
-                <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold text-white mb-6">
-                  Telemetry Tracking Stations
-                </h1>
-                <p className="text-xl text-white/80 mb-8 max-w-2xl">
-                  Advanced telemetry tracking stations for real-time data acquisition and monitoring in critical aerospace and defense applications.
-                </p>
-              </ScrollAnimation>
-            </div>
-          </div>
-        </section>
-
-        {/* Product Details */}
         <section className="py-16 bg-gray-50">
           <div className="container mx-auto px-4">
-            <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 mb-16">
-              <ScrollAnimation direction="left">
-                <div>
-                  <h2 className="text-3xl font-bold mb-6">Advanced Ground Tracking</h2>
-                  <p className="text-gray-600 mb-6">
-                    Our Telemetry Tracking Stations provide reliable, real-time data acquisition for satellite programs, 
-                    defense applications, and aerospace missions where precision and reliability are paramount.
-                  </p>
-                  <p className="text-gray-600 mb-6">
-                    Engineered to operate in harsh environments while maintaining exceptional performance standards.
-                  </p>
-                </div>
-              </ScrollAnimation>
+            <ScrollAnimation direction="fade" className="text-center mb-12">
+              <h1 className="text-4xl md:text-5xl font-bold text-tech-black mb-6">
+                Telemetry Tracking Stations
+              </h1>
+              <p className="text-xl text-gray-600 max-w-3xl mx-auto">
+                Advanced telemetry tracking stations for real-time data acquisition and monitoring in critical aerospace and defense applications.
+              </p>
+            </ScrollAnimation>
 
-              <ScrollAnimation direction="right">
-                <img
-                  src="https://images.unsplash.com/photo-1518709268805-4e9042af2176?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&q=80&w=800"
-                  alt="Telemetry Tracking Station"
-                  className="w-full h-64 object-cover rounded-lg shadow-lg"
-                />
-              </ScrollAnimation>
-            </div>
+            <ScrollAnimation direction="up" className="mb-16">
+              <img
+                src="https://images.unsplash.com/photo-1518709268805-4e9042af2176?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&q=80&w=1200"
+                alt="Telemetry Tracking Station"
+                className="w-full max-w-4xl mx-auto h-96 object-cover rounded-lg shadow-lg"
+              />
+            </ScrollAnimation>
 
             {/* Key Features */}
-            <ScrollAnimation direction="up" className="mb-16">
+            <ScrollAnimation direction="up">
               <h3 className="text-2xl font-bold mb-8 text-center">Key Features</h3>
               <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
                 <Card className="text-center">
@@ -91,19 +55,6 @@ const TelemetryTrackingStations = () => {
                     <p className="text-gray-600">Tracking accuracy within ±0.1°</p>
                   </CardContent>
                 </Card>
-              </div>
-            </ScrollAnimation>
-
-            {/* CTA Section */}
-            <ScrollAnimation direction="up" className="text-center">
-              <div className="bg-tech-black rounded-lg p-8 text-white">
-                <h3 className="text-2xl font-bold mb-4">Ready to Deploy Advanced Tracking?</h3>
-                <p className="text-gray-300 mb-6 max-w-2xl mx-auto">
-                  Contact our experts to discuss your specific requirements and learn how our solutions can enhance your mission capabilities.
-                </p>
-                <Button size="lg" className="bg-tech-blue hover:bg-tech-accent">
-                  Contact Us Today
-                </Button>
               </div>
             </ScrollAnimation>
           </div>
