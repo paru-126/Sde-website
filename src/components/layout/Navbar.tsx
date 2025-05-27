@@ -86,12 +86,11 @@ const navLinks: NavLinkProps[] = [
       }
     ]
   },
-    { 
+  { 
     title: 'Contact', 
     href: '/contact' 
   },
 ];
-
 
 const Navbar = () => {
   const location = useLocation();

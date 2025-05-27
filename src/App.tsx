@@ -15,6 +15,13 @@ import References from "./pages/updates/References";
 import Events from "./pages/updates/Events";
 import Blog from "./pages/updates/Blog";
 
+// Product Pages
+import TelemetryTrackingStations from "./pages/products/TelemetryTrackingStations";
+import GroundTelemetryCheckoutSystem from "./pages/products/GroundTelemetryCheckoutSystem";
+import AirborneTelemetrySystem from "./pages/products/AirborneTelemetrySystem";
+import DroneTelemetrySystem from "./pages/products/DroneTelemetrySystem";
+import HighPowerRFAmplifiers from "./pages/products/HighPowerRFAmplifiers";
+
 const queryClient = new QueryClient();
 
 const App = () => (
@@ -33,6 +40,14 @@ const App = () => (
           <Route path="/updates/references" element={<References />} />
           <Route path="/updates/events" element={<Events />} />
           <Route path="/updates/blog" element={<Blog />} />
+          
+          {/* Product Routes */}
+          <Route path="/products/telemetry-tracking-stations" element={<TelemetryTrackingStations />} />
+          <Route path="/products/ground-telemetry-checkout-system" element={<GroundTelemetryCheckoutSystem />} />
+          <Route path="/products/airborne-telemetry-system" element={<AirborneTelemetrySystem />} />
+          <Route path="/products/drone-telemetry-system" element={<DroneTelemetrySystem />} />
+          <Route path="/products/high-power-rf-amplifiers" element={<HighPowerRFAmplifiers />} />
+          
           {/* ADD ALL CUSTOM ROUTES ABOVE THE CATCH-ALL "*" ROUTE */}
           <Route path="*" element={<NotFound />} />
         </Routes>
