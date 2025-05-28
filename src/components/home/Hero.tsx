@@ -81,7 +81,9 @@ const Hero = () => {
           <ScrollAnimation direction="up" delay={800}>
             <div className="flex flex-col sm:flex-row gap-4">
               <Button size="lg" className="bg-tech-blue hover:bg-tech-accent text-white">
-                Explore Our Products
+                <Link to="/updates" className="flex items-center">
+                  Explore Our Products
+                </Link>
               </Button>
               <Button variant="outline" size="lg" className="text-white border-white bg-transparent hover:bg-white hover:text-tech-black">
                 <Link to="/about" className="flex items-center">

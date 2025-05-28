@@ -4,7 +4,7 @@ import Navbar from "@/components/layout/Navbar";
 import Footer from "@/components/layout/Footer";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent } from "@/components/ui/card";
-import { Cpu, Zap, Settings, Shield, Radio, ChevronRight, Wrench } from "lucide-react";
+import { Cpu, Zap, Settings, Shield, Radio, ChevronRight, Wrench,Satellite, HardHat, Waves } from "lucide-react";
 import ScrollAnimation from "@/components/ui/scroll-animation";
 
 interface Product {
@@ -39,22 +39,34 @@ const productCategories: ProductCategory[] = [
     color: 'bg-blue-500'
   },
   {
-    id: 'integration',
-    name: 'Integration & Sub Systems',
+    id: 'data-link',
+    name: 'Data Link Systems',
+    icon: Satellite, // You may need to import this icon
+    color: 'bg-indigo-500'
+  },
+  {
+    id: 'integrated-subsystems',
+    name: 'Integrated Sub Systems & Solutions',
     icon: Cpu,
     color: 'bg-green-500'
   },
   {
-    id: 'mil-infrastructure',
-    name: 'MIL-Grade Electronic Infrastructure',
-    icon: Shield,
-    color: 'bg-red-500'
+    id: 'industrial-grade',
+    name: 'Industrial Grade Systems',
+    icon: HardHat, // You may need to import this icon
+    color: 'bg-amber-500'
+  },
+  {
+    id: 'components-rf',
+    name: 'Components & RF Accessories',
+    icon: Waves, // You may need to import this icon
+    color: 'bg-purple-500'
   },
   {
     id: 'services',
     name: 'Services',
     icon: Wrench,
-    color: 'bg-purple-500'
+    color: 'bg-red-500'
   }
 ];
 
@@ -62,152 +74,246 @@ const products: Product[] = [
   // Telemetry Systems
   {
     id: 1,
-    name: 'Telemetry Tracking Stations',
+    name: 'Ground Telemetry Tracking Systems',
     type: 'Ground Systems',
     category: 'telemetry',
-    description: 'Advanced telemetry tracking stations for real-time data acquisition and monitoring.',
-    image: 'https://images.unsplash.com/photo-1518709268805-4e9042af2176?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&q=80&w=600',
-    specifications: ['Multi-frequency tracking', 'Real-time data processing', 'Weather-resistant design'],
-    slug: 'telemetry-tracking-stations'
+    description: 'Advanced ground-based telemetry tracking systems for real-time data acquisition and monitoring.',
+    image: '',
+    specifications: ['Multi-frequency tracking', 'High precision positioning', 'Weather-resistant design'],
+    slug: 'ground-telemetry-tracking-systems'
   },
   {
     id: 2,
-    name: 'Ground Telemetry Checkout System',
+    name: 'Single Channel Ground Telemetry Checkout Systems',
     type: 'Telemetry Subsystems',
     category: 'telemetry',
-    description: 'Comprehensive ground-based telemetry checkout and validation systems.',
-    image: 'https://images.unsplash.com/photo-1581091226825-a6a2a5aee158?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&q=80&w=600',
-    specifications: ['Automated testing', 'Signal validation', 'Comprehensive reporting'],
-    slug: 'ground-telemetry-checkout-system'
+    description: 'Compact and efficient single channel telemetry checkout systems for validation and testing.',
+    image: '',
+    specifications: ['Single channel operation', 'Automated testing', 'Compact design'],
+    slug: 'single-channel-ground-telemetry-checkout-systems'
   },
   {
     id: 3,
-    name: 'Airborne Telemetry System',
-    type: 'Flight Systems',
+    name: 'Telemetry Data Monitoring Systems',
+    type: 'Monitoring Systems',
     category: 'telemetry',
-    description: 'High-performance airborne telemetry systems for aircraft and UAV applications.',
-    image: 'https://images.unsplash.com/photo-1540962351504-03099e0a754b?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&q=80&w=600',
-    specifications: ['Lightweight design', 'High data throughput', 'Multi-channel capability'],
-    slug: 'airborne-telemetry-system'
+    description: 'Comprehensive data monitoring solutions for telemetry applications.',
+    image: '',
+    specifications: ['Real-time data visualization', 'Customizable dashboards', 'Alert systems'],
+    slug: 'telemetry-data-monitoring-systems'
   },
   {
     id: 4,
-    name: 'Drone Telemetry System',
+    name: 'Drone Based Telemetry Receiving Station',
     type: 'UAV Systems',
     category: 'telemetry',
-    description: 'Specialized telemetry systems designed for drone and unmanned vehicle operations.',
-    image: 'https://images.unsplash.com/photo-1473968512647-3e447244af8f?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&q=80&w=600',
-    specifications: ['Long-range communication', 'Low power consumption', 'Compact form factor'],
-    slug: 'drone-telemetry-system'
+    description: 'Mobile telemetry receiving stations based on drone platforms.',
+    image: '',
+    specifications: ['Portable design', 'Quick deployment', 'Long-range communication'],
+    slug: 'drone-based-telemetry-receiving-station'
   },
-
-  // Integration & System Solutions
   {
     id: 5,
-    name: 'High-Power RF Amplifiers',
-    type: 'RF Integration',
-    category: 'integration',
-    description: 'Integration and supply of high-power RF amplifiers for defense applications.',
-    image: 'https://images.unsplash.com/photo-1558618666-fcd25c85cd64?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&q=80&w=600',
-    specifications: ['High output power', 'Wide frequency range', 'Excellent linearity'],
-    slug: 'high-power-rf-amplifiers'
+    name: 'Airborne Telemetry Systems',
+    type: 'Flight Systems',
+    category: 'telemetry',
+    description: 'High-performance airborne telemetry systems for aircraft applications.',
+    image: '',
+    specifications: ['Lightweight design', 'High data throughput', 'Multi-channel capability'],
+    slug: 'airborne-telemetry-systems'
   },
+
+  // Data Link Systems
   {
     id: 6,
-    name: 'Ground Loop Back Units',
-    type: 'Test Equipment',
-    category: 'integration',
-    description: 'Specialized ground loop back units for system testing and validation.',
-    image: 'https://images.unsplash.com/photo-1581092921461-eab62e97a780?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&q=80&w=600',
-    specifications: ['Automated testing', 'Multiple interfaces', 'Real-time monitoring'],
-    slug: 'ground-loop-back-units'
+    name: 'UHF Data Link Systems',
+    type: 'UHF Systems',
+    category: 'data-link',
+    description: 'Reliable UHF band data link systems for secure communication.',
+    image: '',
+    specifications: ['UHF frequency range', 'Secure encryption', 'Long-range capability'],
+    slug: 'uhf-data-link-systems'
   },
   {
     id: 7,
-    name: 'Customized Defense Software',
-    type: 'Software Solutions',
-    category: 'integration',
-    description: 'Tailored software solutions for defense and aerospace applications.',
-    image: 'https://images.unsplash.com/photo-1516321318423-f06f85e504b3?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&q=80&w=600',
-    specifications: ['Custom development', 'Real-time processing', 'Secure architecture'],
-    slug: 'customized-defense-software'
+    name: 'L-band Data Link Systems',
+    type: 'L-band Systems',
+    category: 'data-link',
+    description: 'High-performance L-band data link solutions.',
+    image: '',
+    specifications: ['L-band frequency', 'High data rate', 'Interference resistant'],
+    slug: 'l-band-data-link-systems'
   },
   {
     id: 8,
-    name: 'Rugged Computers & Networking',
-    type: 'Computing Solutions',
-    category: 'integration',
-    description: 'Customized rugged computers and networking switches for harsh environments.',
-    image: 'https://images.unsplash.com/photo-1518709268805-4e9042af2176?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&q=80&w=600',
-    specifications: ['MIL-STD compliant', 'Extended temperature range', 'Shock and vibration resistant'],
-    slug: 'rugged-computers-networking'
+    name: 'S-band Data Link Systems',
+    type: 'S-band Systems',
+    category: 'data-link',
+    description: 'Advanced S-band data link systems for critical applications.',
+    image: '',
+    specifications: ['S-band frequency', 'High reliability', 'Weather resistant'],
+    slug: 's-band-data-link-systems'
   },
 
-  // MIL-Grade Electronic Infrastructure (combined category)
+  // Integrated Sub Systems & Solutions
   {
     id: 9,
-    name: 'MIL-Grade Missile Cable Assemblies',
-    type: 'Cable Systems',
-    category: 'mil-infrastructure',
-    description: 'High-reliability missile cable assemblies meeting military specifications.',
-    image: 'https://images.unsplash.com/photo-1581092795360-fd1ca04f0952?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&q=80&w=600',
-    specifications: ['MIL-STD-1553', 'High temperature rated', 'EMI/RFI shielding'],
-    slug: 'mil-grade-missile-cables'
+    name: 'Customized Integrated Test Jigs',
+    type: 'Test Equipment',
+    category: 'integrated-subsystems',
+    description: 'Tailored test jigs for specific system testing requirements.',
+    image: '',
+    specifications: ['Custom configurations', 'Precision testing', 'Modular design'],
+    slug: 'customized-integrated-test-jigs'
   },
   {
     id: 10,
-    name: 'MIL-Grade RF Cable Assemblies',
-    type: 'RF Cables',
-    category: 'mil-infrastructure',
-    description: 'Precision RF cable assemblies for military and aerospace applications.',
-    image: 'https://images.unsplash.com/photo-1581092918056-0c4c3acd3789?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&q=80&w=600',
-    specifications: ['Low loss design', 'Phase stable', 'Environmental sealing'],
-    slug: 'mil-grade-rf-cables'
+    name: 'Ground Loopback Link Integrated Systems',
+    type: 'Test Systems',
+    category: 'integrated-subsystems',
+    description: 'Integrated loopback systems for comprehensive testing.',
+    image: '',
+    specifications: ['Automated testing', 'Multiple interfaces', 'Real-time monitoring'],
+    slug: 'ground-loopback-link-integrated-systems'
   },
   {
     id: 11,
-    name: 'MIL-Grade Connectors',
-    type: 'Connectors',
-    category: 'mil-infrastructure',
-    description: 'Comprehensive range of MIL-grade connectors including Micro-D, Nano-D, D-Sub, and Circular.',
-    image: 'https://images.unsplash.com/photo-1581093588401-fbb62a02f120?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&q=80&w=600',
-    specifications: ['Multiple form factors', 'Gold plated contacts', 'Hermetic sealing'],
-    slug: 'mil-grade-connectors'
+    name: 'Integrated RF Power Amplifier Units',
+    type: 'RF Integration',
+    category: 'integrated-subsystems',
+    description: 'High-power RF amplifier units for integrated solutions.',
+    image: '',
+    specifications: ['High output power', 'Wide frequency range', 'Excellent linearity'],
+    slug: 'integrated-rf-power-amplifier-units'
   },
+
+  // Industrial Grade Systems
   {
     id: 12,
-    name: 'MIL-Grade DC-DC Converters',
-    type: 'Power Conversion',
-    category: 'mil-infrastructure',
-    description: 'High-efficiency DC-DC converters designed for military applications.',
-    image: 'https://images.unsplash.com/photo-1581092921461-eab62e97a780?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&q=80&w=600',
-    specifications: ['Wide input range', 'High efficiency', 'EMI compliant'],
-    slug: 'mil-grade-dc-dc-converters'
+    name: 'Industrial Grade IPCs',
+    type: 'Industrial PCs',
+    category: 'industrial-grade',
+    description: 'Rugged industrial grade industrial PCs for harsh environments.',
+    image: '',
+    specifications: ['MIL-STD compliant', 'Extended temperature range', 'Shock resistant'],
+    slug: 'industrial-grade-ipcs'
   },
   {
     id: 13,
-    name: 'DC Programmable Power Supplies',
-    type: 'Power Systems',
-    category: 'mil-infrastructure',
-    description: 'Precision DC programmable power supplies for testing and development.',
-    image: 'https://images.unsplash.com/photo-1558618047-3c8c76ca7d13?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&q=80&w=600',
-    specifications: ['Digital control', 'High precision', 'Remote programming'],
-    slug: 'dc-programmable-power-supplies'
+    name: 'Industrial Grade Panel PCs',
+    type: 'Panel PCs',
+    category: 'industrial-grade',
+    description: 'Durable panel PCs designed for industrial applications.',
+    image: '',
+    specifications: ['Touchscreen displays', 'IP65 rated', 'Fanless design'],
+    slug: 'industrial-grade-panel-pcs'
   },
   {
     id: 14,
-    name: 'RF & Microwave Components',
+    name: 'Network Adapters & Switches',
+    type: 'Networking',
+    category: 'industrial-grade',
+    description: 'Industrial grade networking equipment for reliable connectivity.',
+    image: '',
+    specifications: ['Rugged design', 'High-speed connectivity', 'Industrial protocols'],
+    slug: 'network-adapters-switches'
+  },
+  {
+    id: 22, // Make sure this ID is unique
+    name: 'Industrial Grade Automation Cards and Modules',
+    type: 'Automation Components',
+    category: 'industrial-grade',
+    description: 'Rugged automation cards and modules designed for industrial control systems.',
+    image: '',
+    specifications: ['Wide temperature operation','High vibration resistance','Multiple I/O interfaces','Industrial protocol support'],
+    slug: 'industrial-grade-automation-cards-modules'
+  },
+
+  // Components & RF Accessories
+  {
+    id: 15,
+    name: 'MIL-Grade RF Connectors',
     type: 'RF Components',
-    category: 'mil-infrastructure',
-    description: 'Comprehensive range of RF and microwave components for various applications.',
-    image: 'https://images.unsplash.com/photo-1581092795360-fd1ca04f0952?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&q=80&w=600',
-    specifications: ['Wide frequency range', 'Low insertion loss', 'High power handling'],
-    slug: 'rf-microwave-components'
+    category: 'components-rf',
+    description: 'High-quality RF connectors meeting military specifications.',
+    image: '',
+    specifications: ['MIL-STD compliant', 'Low insertion loss', 'Durable construction'],
+    slug: 'mil-grade-rf-connectors'
+  },
+  {
+    id: 16,
+    name: 'MIL Grade Circular Connectors',
+    type: 'Connectors',
+    category: 'components-rf',
+    description: 'Robust circular connectors for military applications.',
+    image: '',
+    specifications: ['Environmental sealing', 'Multiple pin configurations', 'High reliability'],
+    slug: 'mil-grade-circular-connectors'
+  },
+  {
+    id: 17,
+    name: 'DC to DC Converters',
+    type: 'Power Conversion',
+    category: 'components-rf',
+    description: 'Efficient DC-DC converters for various applications.',
+    image: '',
+    specifications: ['Wide input range', 'High efficiency', 'Compact size'],
+    slug: 'dc-to-dc-converters'
+  },
+  {
+    id: 18,
+    name: 'Telemetry Antenna',
+    type: 'Antennas',
+    category: 'components-rf',
+    description: 'Specialized antennas for telemetry applications.',
+    image: '',
+    specifications: ['High gain', 'Lightweight', 'Durable construction'],
+    slug: 'telemetry-antenna'
+  },
+
+  {
+    id: 19,
+    name: 'Low Noise Amplifiers',
+    type: 'RF Components',
+    category: 'components-rf',
+    description: 'Low Noise Amplifiers for sensitive RF applications.',
+    image: '',
+    specifications: ['Low noise figure', 'High gain', 'Wide bandwidth'],
+    slug: 'lna'
+  },
+  {
+    id: 23, // Make sure this ID is unique
+      name: 'Custom RF Cable Assemblies',
+      type: 'RF Components',
+      category: 'components-rf',
+      description: 'Custom-designed RF cable assemblies for specific application requirements.',
+      image: '',
+      specifications: ['Precision impedance matching','Low loss designs','Custom lengths and connectors','Phase stable options available'],
+      slug: 'custom-rf-cable-assemblies'
+  },
+
+  // Services
+  {
+    id: 20,
+    name: 'Customized Defense Software Solutions',
+    type: 'Software Services',
+    category: 'services',
+    description: 'Tailored software solutions for defense applications.',
+    image: '',
+    specifications: ['Custom development', 'Secure architecture', 'Real-time processing'],
+    slug: 'customized-defense-software-solutions'
+  },
+  {
+    id: 21,
+    name: 'Drone Based Sorties for Defense Applications',
+    type: 'Operational Services',
+    category: 'services',
+    description: 'Specialized drone sorties for defense and surveillance.',
+    image: '',
+    specifications: ['Mission planning', 'Real-time data collection', 'Secure communication'],
+    slug: 'drone-based-sorties-for-defense-applications'
   }
-
-  // Services category is intentionally left empty as requested
 ];
-
 // ... rest of the component code remains the same ...
 
 const Products = () => {

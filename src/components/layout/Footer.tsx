@@ -12,7 +12,7 @@ const Footer = () => {
           <div className="lg:col-span-2">
             <Link to="/" className="inline-flex items-center mb-6">
               <img 
-                src="https://drive.google.com/thumbnail?id=1OyvUSlaxgDqGS5lRgps0egCBp8182rXc"
+                src="https://i.ibb.co/RXXGPgj/logo.webp"
                 alt="Sri Datta Electronics Logo" 
                 referrerPolicy="no-referrer"
                 className="h-12 w-12 object-contain rounded-full border-2 border-blue-500/50"

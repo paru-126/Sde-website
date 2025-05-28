@@ -51,38 +51,60 @@ const navLinks: NavLinkProps[] = [
         title: 'Telemetry Systems', 
         href: '/updates#telemetry',
         children: [
-          { title: 'Telemetry Tracking Stations', href: '/products/telemetry-tracking-stations' },
-          { title: 'Ground Telemetry Checkout System', href: '/products/ground-telemetry-checkout-system' },
-          { title: 'Airborne Telemetry System', href: '/products/airborne-telemetry-system' },
-          { title: 'Drone Telemetry System', href: '/products/drone-telemetry-system' }
+          { title: 'Ground Telemetry Tracking Systems', href: '/products/ground-telemetry-tracking-systems' },
+          { title: 'Single Channel Ground Telemetry Checkout Systems', href: '/products/single-channel-ground-telemetry-checkout-systems' },
+          { title: 'Telemetry Data Monitoring Systems', href: '/products/telemetry-data-monitoring-systems' },
+          { title: 'Drone Based Telemetry Receiving Station', href: '/products/drone-based-telemetry-receiving-station' },
+          { title: 'Airborne Telemetry Systems', href: '/products/airborne-telemetry-systems' }
         ]
       },
       { 
-        title: 'Integration & Sub Systems', 
-        href: '/updates#integration',
+        title: 'Data Link Systems', 
+        href: '/updates#data-link',
         children: [
-          { title: 'High-Power RF Amplifiers', href: '/products/high-power-rf-amplifiers' },
-          { title: 'Ground Loop Back Units', href: '/products/ground-loop-back-units' },
-          { title: 'Customized Defense Software', href: '/products/customized-defense-software' },
-          { title: 'Rugged Computers & Networking', href: '/products/rugged-computers-networking' }
+          { title: 'UHF Data Link Systems', href: '/products/uhf-data-link-systems' },
+          { title: 'L-band Data Link Systems', href: '/products/l-band-data-link-systems' },
+          { title: 'S-band Data Link Systems', href: '/products/s-band-data-link-systems' }
         ]
       },
       { 
-        title: 'MIL-Grade Electronic Infrastructure', 
-        href: '/updates#mil-infrastructure',
+        title: 'Integrated Sub Systems & Solutions', 
+        href: '/updates#integrated-subsystems',
         children: [
-          { title: 'MIL-Grade Missile Cable Assemblies', href: '/products/mil-grade-missile-cables' },
-          { title: 'MIL-Grade RF Cable Assemblies', href: '/products/mil-grade-rf-cables' },
-          { title: 'MIL-Grade Connectors', href: '/products/mil-grade-connectors' },
-          { title: 'MIL-Grade DC-DC Converters', href: '/products/mil-grade-dc-dc-converters' },
-          { title: 'DC Programmable Power Supplies', href: '/products/dc-programmable-power-supplies' },
-          { title: 'RF & Microwave Components', href: '/products/rf-microwave-components' }
+          { title: 'Customized Integrated Test Jigs', href: '/products/customized-integrated-test-jigs' },
+          { title: 'Ground Loopback Link Integrated Systems', href: '/products/ground-loopback-link-integrated-systems' },
+          { title: 'Integrated RF Power Amplifier Units', href: '/products/integrated-rf-power-amplifier-units' }
+        ]
+      },
+      { 
+        title: 'Industrial Grade Systems', 
+        href: '/updates#industrial-grade',
+        children: [
+          { title: 'Industrial Grade IPCs', href: '/products/industrial-grade-ipcs' },
+          { title: 'Industrial Grade Panel PCs', href: '/products/industrial-grade-panel-pcs' },
+          { title: 'Network Adapters & Switches', href: '/products/network-adapters-switches' },
+          { title: 'Industrial Grade Automation Cards and Modules', href: '/products/industrial-grade-automation-cards-modules' }
+        ]
+      },
+      { 
+        title: 'Components & RF Accessories', 
+        href: '/updates#components-rf',
+        children: [
+          { title: 'MIL-Grade RF Connectors', href: '/products/mil-grade-rf-connectors' },
+          { title: 'MIL Grade Circular Connectors', href: '/products/mil-grade-circular-connectors' },
+          { title: 'DC to DC Converters', href: '/products/dc-to-dc-converters' },
+          { title: 'Low Noise Amplifiers', href: '/products/lna' },
+          { title: 'Telemetry Antenna', href: '/products/telemetry-antenna' },
+          { title: 'Custom RF Cable Assemblies', href: '/products/custom-rf-cable-assemblies' }
         ]
       },
       { 
         title: 'Services', 
         href: '/updates#services',
-        children: []
+        children: [
+          { title: 'Customized Defense Software Solutions', href: '/products/customized-defense-software-solutions' },
+          { title: 'Drone Based Sorties for Defense Applications', href: '/products/drone-based-sorties-for-defense-applications' }
+        ]
       }
     ]
   },
@@ -155,7 +177,7 @@ const Navbar = () => {
           {/* Logo */}
           <Link to="/" className="flex items-center space-x-3">
             <img 
-              src="https://drive.google.com/thumbnail?id=1OyvUSlaxgDqGS5lRgps0egCBp8182rXc" 
+              src="https://i.ibb.co/RXXGPgj/logo.webp" 
               alt="Sri Datta Electronics Logo" 
               className="h-10 w-10 object-contain rounded-full"
             />
