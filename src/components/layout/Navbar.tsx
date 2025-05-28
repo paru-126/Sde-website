@@ -55,7 +55,8 @@ const navLinks: NavLinkProps[] = [
           { title: 'Single Channel Ground Telemetry Checkout Systems', href: '/products/single-channel-ground-telemetry-checkout-systems' },
           { title: 'Telemetry Data Monitoring Systems', href: '/products/telemetry-data-monitoring-systems' },
           { title: 'Drone Based Telemetry Receiving Station', href: '/products/drone-based-telemetry-receiving-station' },
-          { title: 'Airborne Telemetry Systems', href: '/products/airborne-telemetry-systems' }
+          { title: 'Airborne Telemetry Systems', href: '/products/airborne-telemetry-systems' },
+          { title: 'Dual Channel Telemetry System', href: '/products/dual-channel-telemetry-system' }
         ]
       },
       { 
@@ -64,7 +65,8 @@ const navLinks: NavLinkProps[] = [
         children: [
           { title: 'UHF Data Link Systems', href: '/products/uhf-data-link-systems' },
           { title: 'L-band Data Link Systems', href: '/products/l-band-data-link-systems' },
-          { title: 'S-band Data Link Systems', href: '/products/s-band-data-link-systems' }
+          { title: 'S-band Data Link Systems', href: '/products/s-band-data-link-systems' },
+          { title: 'Single Channel Decommutator System', href: '/products/single-channel-decommutator-system' }
         ]
       },
       { 

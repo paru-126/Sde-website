@@ -18,9 +18,9 @@ const Footer = () => {
                 className="h-12 w-12 object-contain rounded-full border-2 border-blue-500/50"
               />
               <div className="ml-4">
-                <h2 className="text-xl font-bold text-white">
-                  Sri Datta <span className="text-blue-400">Electronics</span>
-                </h2>
+                  <h2 className="text-2xl font-bold text-white group-hover:text-blue-400 transition-colors duration-300">
+                    Sri Datta Electronics Pvt. Ltd.
+                  </h2>
                 <p className="text-sm text-slate-400">
                   Defense & Aerospace Solutions
                 </p>
@@ -35,15 +35,12 @@ const Footer = () => {
             <div className="p-6 bg-slate-800/50 rounded-lg border border-slate-700/50">
               <Link to="/" className="flex items-center">
                 <img 
-                  src="https://drive.google.com/thumbnail?id=1OyvUSlaxgDqGS5lRgps0egCBp8182rXc"
+                  src="https://i.ibb.co/wNzCBKbV/logo-pdf.webp"
                   alt="Sri Datta DMV Logo" 
                   referrerPolicy="no-referrer"
-                  className="h-10 w-10 object-contain rounded-full border border-blue-500/50"
+                  className="h-10  object-contain rounded-full border border-blue-500/50"
                 />
                 <div className="ml-4">
-                  <h3 className="text-lg font-bold text-white">
-                    Sri Datta <span className="text-blue-400">DMV</span>
-                  </h3>
                   <p className="text-sm text-slate-400">
                     Empowering electronics innovation
                   </p>
