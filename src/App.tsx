@@ -11,10 +11,7 @@ import About from "./pages/About";
 import Careers from "./pages/Careers";
 import Contact from "./pages/Contact";
 import Updates from "./pages/Updates";
-import News from "./pages/updates/News";
-import References from "./pages/updates/References";
-import Events from "./pages/updates/Events";
-import Blog from "./pages/updates/Blog";
+
 
 // Product Pages - Telemetry Systems
 import GroundTelemetryTrackingSystems from "./pages/products/GroundTelemetryTrackingSystems";
@@ -67,10 +64,7 @@ const App = () => (
           <Route path="/careers" element={<Careers />} />
           <Route path="/contact" element={<Contact />} />
           <Route path="/updates" element={<Updates />} />
-          <Route path="/updates/news" element={<News />} />
-          <Route path="/updates/references" element={<References />} />
-          <Route path="/updates/events" element={<Events />} />
-          <Route path="/updates/blog" element={<Blog />} />
+
           
           {/* Telemetry Systems */}
           <Route path="/products/ground-telemetry-tracking-systems" element={<GroundTelemetryTrackingSystems />} />
