@@ -6,19 +6,19 @@ import ScrollAnimation from '@/components/ui/scroll-animation';
 
 const heroSlides = [
   {
-    title: "Innovative Electronics For Tomorrow's World",
-    subtitle: "Cutting-edge solutions that power the future of technology",
-    image: "https://images.unsplash.com/photo-1486312338219-ce68d2c6f44d?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&q=80&w=1080"
+    title: "Advanced Electronic Systems & Components",
+    subtitle: "Military-grade solutions for aerospace, defense, and industrial applications",
+    image: "https://i.ibb.co/4R9f24ND/image-2.webp"
   },
   {
-    title: "Precision Engineering, Exceptional Performance",
-    subtitle: "Setting new standards in electronic manufacturing",
-    image: "https://images.unsplash.com/photo-1531297484001-80022131f5a1?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&q=80&w=1080"
+    title: "Military-Grade RF Components",
+    subtitle: "High-performance connectors and accessories built for extreme conditions",
+    image: "https://i.ibb.co/QFRr1T6R/image-4.webp"
   },
   {
-    title: "Connect With The Future",
-    subtitle: "Experience next-generation electronic solutions",
-    image: "https://images.unsplash.com/photo-1488590528505-98d2b5aba04b?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&q=80&w=1080"
+    title: "Precision Telemetry & Data Link Solutions",
+    subtitle: "Real-time communication systems engineered for mission-critical environments",
+    image: "https://i.ibb.co/YTN8G08j/image-5.webp"
   }
 ];
 

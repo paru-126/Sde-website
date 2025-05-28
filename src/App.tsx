@@ -19,11 +19,14 @@ import SingleChannelGroundTelemetryCheckoutSystem from "./pages/products/SingleC
 import TelemetryDataMonitoringSystems from "./pages/products/TelemetryDataMonitoringSystems";
 import DroneBasedTelemetryReceivingStation from "./pages/products/DroneBasedTelemetryReceivingStation";
 import AirborneTelemetrySystems from "./pages/products/AirborneTelemetrySystems";
+import DualChannelTelemetrySystem from "./pages/products/DualChannelTelemetrySystem";
 
 // Product Pages - Data Link Systems
 import UHFDataLinkSystem from "./pages/products/UHFDataLinkSystem";
 import LBandDataLinkSystem from "./pages/products/LBandDataLinkSystem";
 import SBandDataLinkSystem from "./pages/products/SBandDataLinkSystem";
+import SingleChannelDecommutatorSystem from "./pages/products/SingleChannelDecommutatorSystem";
+
 
 // Product Pages - Integrated Subsystems
 import CustomTestJigs from "./pages/products/CustomTestJigs";
@@ -72,11 +75,14 @@ const App = () => (
           <Route path="/products/telemetry-data-monitoring-systems" element={<TelemetryDataMonitoringSystems />} />
           <Route path="/products/drone-based-telemetry-receiving-station" element={<DroneBasedTelemetryReceivingStation />} />
           <Route path="/products/airborne-telemetry-systems" element={<AirborneTelemetrySystems />} />
-          
+          <Route path="/products/dual-channel-telemetry-system" element={<DualChannelTelemetrySystem />} />
+
+
           {/* Data Link Systems */}
           <Route path="/products/uhf-data-link-systems" element={<UHFDataLinkSystem />} />
           <Route path="/products/l-band-data-link-systems" element={<LBandDataLinkSystem />} />
           <Route path="/products/s-band-data-link-systems" element={<SBandDataLinkSystem />} />
+          <Route path="/products/single-channel-decommutator-system" element={<SingleChannelDecommutatorSystem />} />
           
           {/* Integrated Subsystems */}
           <Route path="/products/customized-integrated-test-jigs" element={<CustomTestJigs />} />

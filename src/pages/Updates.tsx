@@ -122,6 +122,16 @@ const products: Product[] = [
     specifications: ['Lightweight design', 'High data throughput', 'Multi-channel capability'],
     slug: 'airborne-telemetry-systems'
   },
+  {
+    id: 24, // Make sure this ID is unique in your products array
+    name: 'Dual Channel Telemetry System',
+    type: 'Flight Systems',
+    category: 'telemetry',
+    description: 'Advanced dual-channel telemetry solution for simultaneous data acquisition from multiple sources during flight tests.',
+    image: 'https://i.ibb.co/h1CwqgSc/Dual-channel-Telemetry-System.webp',
+    specifications: ['Dual independent telemetry channels','Synchronized data timestamping','Cross-channel data validation','Compact airborne form factor'],
+    slug: 'dual-channel-telemetry-system'
+  },
 
   // Data Link Systems
   {
@@ -153,6 +163,16 @@ const products: Product[] = [
     image: '',
     specifications: ['S-band frequency', 'High reliability', 'Weather resistant'],
     slug: 's-band-data-link-systems'
+  },
+  {
+    id: 25, // Make sure this ID is unique in your products array
+    name: 'Single Channel Decommutator System',
+    type: 'Ground Equipment',
+    category: 'data-link',
+    description: 'Precision decommutation system for processing single-channel telemetry data streams with ultra-low latency.',
+    image: 'https://i.ibb.co/46t8JQM/Single-Channel-Decommutator-System-Data-Link.webp',
+    specifications: ['Single-channel PCM processing','Real-time data extraction','Adaptive frame synchronization','MIL-STD-1553 interface support'],
+    slug: 'single-channel-decommutator-system'
   },
 
   // Integrated Sub Systems & Solutions

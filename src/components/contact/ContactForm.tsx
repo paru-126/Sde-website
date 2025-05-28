@@ -1,9 +1,25 @@
-
 import { useState } from "react";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
 import { useToast } from "@/components/ui/use-toast";
+import { initializeApp } from "firebase/app";
+import { getFirestore, collection, addDoc, serverTimestamp } from "firebase/firestore";
+
+// Firebase configuration
+const firebaseConfig = {
+apiKey: "AIzaSyC9xAO0QD5sg_IcS3bUSVcDscZF83nFPZM",
+authDomain: "sridattaelectronics-7724d.firebaseapp.com",
+projectId: "sridattaelectronics-7724d",
+storageBucket: "sridattaelectronics-7724d.firebasestorage.app",
+messagingSenderId: "209241219519",
+appId: "1:209241219519:web:7dc654436ce0901981010a",
+measurementId: "G-SNCGB0NQBK"
+};
+
+// Initialize Firebase
+const app = initializeApp(firebaseConfig);
+const db = getFirestore(app);
 
 interface FormData {
   name: string;
@@ -36,19 +52,32 @@ const ContactForm = () => {
     }));
   };
 
-  const handleSubmit = (e: React.FormEvent) => {
+  const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     setIsSubmitting(true);
-    
-    // Simulate form submission
-    setTimeout(() => {
+
+    try {
+      // Save form data to Firestore
+      await addDoc(collection(db, "contacts"), {
+        ...formData,
+        createdAt: serverTimestamp(),
+      });
+
       toast({
         title: "Message Sent!",
         description: "Thank you for reaching out. We'll get back to you shortly.",
       });
       setFormData(initialFormData);
+    } catch (error) {
+      console.error("Error saving to Firestore:", error);
+      toast({
+        title: "Error",
+        description: "There was an issue sending your message. Please try again.",
+        variant: "destructive",
+      });
+    } finally {
       setIsSubmitting(false);
-    }, 1000);
+    }
   };
 
   return (

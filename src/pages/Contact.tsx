@@ -1,4 +1,3 @@
-
 import { useState } from "react";
 import Navbar from "@/components/layout/Navbar";
 import Footer from "@/components/layout/Footer";
@@ -48,61 +47,16 @@ const Contact = () => {
           </div>
         </section>
         
+        {/* Map Section */}
         <ScrollAnimation direction="up">
           <section className="py-16 bg-gray-50">
             <div className="container mx-auto px-4">
-              <h2 className="text-3xl font-bold text-center mb-12">Global Locations</h2>
-              <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
-                <ScrollAnimation direction="up" delay={100}>
-                  <div className="bg-white p-6 rounded-lg shadow-md">
-                    <h3 className="text-xl font-bold mb-3">North America</h3>
-                    <p className="text-gray-700 mb-2">123 Tech Boulevard</p>
-                    <p className="text-gray-700 mb-2">Silicon Valley, CA 94103</p>
-                    <p className="text-gray-700 mb-2">United States</p>
-                    <p className="text-gray-700">+1 (234) 567-890</p>
-                  </div>
-                </ScrollAnimation>
-                <ScrollAnimation direction="up" delay={200}>
-                  <div className="bg-white p-6 rounded-lg shadow-md">
-                    <h3 className="text-xl font-bold mb-3">Europe</h3>
-                    <p className="text-gray-700 mb-2">45 Innovation Strasse</p>
-                    <p className="text-gray-700 mb-2">Munich, 80331</p>
-                    <p className="text-gray-700 mb-2">Germany</p>
-                    <p className="text-gray-700">+49 (89) 123-4567</p>
-                  </div>
-                </ScrollAnimation>
-                <ScrollAnimation direction="up" delay={300}>
-                  <div className="bg-white p-6 rounded-lg shadow-md">
-                    <h3 className="text-xl font-bold mb-3">Asia Pacific</h3>
-                    <p className="text-gray-700 mb-2">78 Technology Park</p>
-                    <p className="text-gray-700 mb-2">Singapore, 118952</p>
-                    <p className="text-gray-700 mb-2">Singapore</p>
-                    <p className="text-gray-700">+65 6789 0123</p>
-                  </div>
-                </ScrollAnimation>
-              </div>
-            </div>
-          </section>
-        </ScrollAnimation>
-        
-        {/* Map Section */}
-        <ScrollAnimation direction="up">
-          <section className="py-16 bg-white">
-            <div className="container mx-auto px-4">
-              <h2 className="text-3xl font-bold text-center mb-8">Find Us</h2>
-              <Map 
-                markers={[
-                  { position: [-122.1697, 37.4275], title: "Sri Datta Electronics HQ - Silicon Valley" },
-                  { position: [11.5820, 48.1351], title: "Sri Datta Electronics Europe - Munich" },
-                  { position: [103.8198, 1.3521], title: "Sri Datta Electronics Asia - Singapore" }
-                ]}
-                zoom={2}
-                center={[-30, 20]}
-              />
-              <div className="mt-8 text-center">
+              <h2 className="text-3xl font-bold text-center mb-4">Find Us</h2>
+              <Map />
+              <div className="mt-4 text-center">
                 <p className="text-gray-700 max-w-2xl mx-auto">
-                  Visit our headquarters and experience our innovations firsthand. 
-                  Schedule a tour by contacting our customer service team.
+                  Visit our office and experience our innovations firsthand. 
+                  Schedule a visit by contacting our team.
                 </p>
               </div>
             </div>

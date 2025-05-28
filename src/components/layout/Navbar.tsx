@@ -175,13 +175,14 @@ const Navbar = () => {
       <div className="container mx-auto px-20">
         <div className="flex items-center justify-between">
           {/* Logo */}
-          <Link to="/" className="flex items-center space-x-3">
+          <Link to="/" className="flex items-center space-x-4">
             <img 
-              src="https://i.ibb.co/RXXGPgj/logo.webp" 
+              src="https://drive.google.com/thumbnail?id=1OyvUSlaxgDqGS5lRgps0egCBp8182rXc"
               alt="Sri Datta Electronics Logo" 
-              className="h-10 w-10 object-contain rounded-full"
+              referrerPolicy="no-referrer"
+              className="h-13 w-12 object-contain rounded-full"
             />
-            <span className="text-xl font-bold text-white">Sri Datta <span className="text-tech-blue">Electronics</span></span>
+            <span className="text-3xl font-bold text-white">Sri Datta Electronics Pvt. Ltd.</span>
           </Link>
 
           {/* Desktop Navigation */}

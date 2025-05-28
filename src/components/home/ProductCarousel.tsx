@@ -40,7 +40,7 @@ const products = [
   },
   {
     id: 4,
-    name: "Industrial Panel PCs",
+    name: "Industrial Grade Panel PCs",
     description: "Ruggedized panel computers built for harsh industrial environments with touchscreen interfaces.",
     image: "https://images.unsplash.com/photo-1531297484001-80022131f5a1?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&q=80&w=800",
     icon: HardHat,
