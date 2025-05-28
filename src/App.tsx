@@ -74,32 +74,32 @@ const App = () => (
           <Route path="/products/airborne-telemetry-systems" element={<AirborneTelemetrySystems />} />
           
           {/* Data Link Systems */}
-          <Route path="/products/uhf-data-link-system" element={<UHFDataLinkSystem />} />
-          <Route path="/products/l-band-data-link-system" element={<LBandDataLinkSystem />} />
-          <Route path="/products/s-band-data-link-system" element={<SBandDataLinkSystem />} />
+          <Route path="/products/uhf-data-link-systems" element={<UHFDataLinkSystem />} />
+          <Route path="/products/l-band-data-link-systems" element={<LBandDataLinkSystem />} />
+          <Route path="/products/s-band-data-link-systems" element={<SBandDataLinkSystem />} />
           
           {/* Integrated Subsystems */}
-          <Route path="/products/custom-test-jigs" element={<CustomTestJigs />} />
-          <Route path="/products/ground-loopback-systems" element={<GroundLoopbackSystems />} />
-          <Route path="/products/rf-power-amplifiers" element={<RFPowerAmplifiers />} />
+          <Route path="/products/customized-integrated-test-jigs" element={<CustomTestJigs />} />
+          <Route path="/products/ground-loopback-link-integrated-systems" element={<GroundLoopbackSystems />} />
+          <Route path="/products/integrated-rf-power-amplifier-units" element={<RFPowerAmplifiers />} />
           
           {/* Industrial Grade Systems */}
-          <Route path="/products/industrial-ipcs" element={<IndustrialIPCs />} />
-          <Route path="/products/industrial-panel-pcs" element={<IndustrialPanelPCs />} />
+          <Route path="/products/industrial-grade-ipcs" element={<IndustrialIPCs />} />
+          <Route path="/products/industrial-grade-panel-pcs" element={<IndustrialPanelPCs />} />
           <Route path="/products/network-adapters-switches" element={<NetworkAdaptersSwitches />} />
-          <Route path="/products/automation-cards-modules" element={<AutomationCardsModules />} />
+          <Route path="/products/industrial-grade-automation-cards-modules" element={<AutomationCardsModules />} />
           
           {/* Components & RF Accessories */}
           <Route path="/products/mil-grade-rf-connectors" element={<MILGradeRFConnectors />} />
           <Route path="/products/mil-grade-circular-connectors" element={<MILGradeCircularConnectors />} />
-          <Route path="/products/dc-dc-converters" element={<DCDCConverters />} />
-          <Route path="/products/telemetry-antennas" element={<TelemetryAntennas />} />
-          <Route path="/products/low-noise-amplifiers" element={<LowNoiseAmplifiers />} />
+          <Route path="/products/dc-to-dc-converters" element={<DCDCConverters />} />
+          <Route path="/products/telemetry-antenna" element={<TelemetryAntennas />} />
+          <Route path="/products/lna" element={<LowNoiseAmplifiers />} />
           <Route path="/products/custom-rf-cable-assemblies" element={<CustomRFCableAssemblies />} />
           
           {/* Services */}
-          <Route path="/products/custom-defense-software" element={<CustomDefenseSoftware />} />
-          <Route path="/products/drone-sortie-services" element={<DroneSortieServices />} />
+          <Route path="/products/customized-defense-software-solutions" element={<CustomDefenseSoftware />} />
+          <Route path="/products/drone-based-sorties-for-defense-applications" element={<DroneSortieServices />} />
           
           {/* Catch-all Route */}
           <Route path="*" element={<NotFound />} />
