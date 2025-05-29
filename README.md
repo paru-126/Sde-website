@@ -99,7 +99,7 @@ Sri Datta Electronics Pvt. Ltd. is a premier manufacturer and supplier of cuttin
 1. Clone the repository
 ```bash
 git clone <repository-url>
-cd sri-datta-electronics-website
+cd electron-pulse-marketing-hub
 ```
 
 2. Install dependencies
