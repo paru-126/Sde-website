@@ -15,7 +15,7 @@ const Map = () => {
           <p className="mb-4">HYDERABAD-500060 (TS)</p>
           
           <a 
-            href="https://maps.google.com/?q=Chaitanyapuri,+Hyderabad,+Telangana+500060"
+            href="https://maps.app.goo.gl/6qWtuGbKFPq3GQfd9?g_st=iw"
             target="_blank"
             rel="noopener noreferrer"
             className="inline-flex items-center px-4 py-2 bg-tech-blue text-white rounded-lg hover:bg-tech-accent transition-colors"
