@@ -7,6 +7,7 @@ import CompanyProfile from "@/components/about/CompanyProfile";
 import OurStrengths from "@/components/about/OurStrengths";
 import OurVision from "@/components/about/OurVision";
 import FocusedMarket from "@/components/about/FocusedMarket";
+import DirectorsSection from "@/components/about/DirectorsSection";
 import ScrollAnimation from "@/components/ui/scroll-animation";
 
 const About = () => {
@@ -51,14 +52,18 @@ const About = () => {
         </ScrollAnimation>
         
         <ScrollAnimation direction="up" delay={200}>
-          <OurStrengths />
+          <DirectorsSection />
         </ScrollAnimation>
         
         <ScrollAnimation direction="up" delay={300}>
-          <OurVision />
+          <OurStrengths />
         </ScrollAnimation>
         
         <ScrollAnimation direction="up" delay={400}>
+          <OurVision />
+        </ScrollAnimation>
+        
+        <ScrollAnimation direction="up" delay={500}>
           <FocusedMarket />
         </ScrollAnimation>
       </main>
