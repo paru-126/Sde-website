@@ -37,6 +37,7 @@ const navLinks: NavLinkProps[] = [
     href: '/about',
     children: [
       { title: 'Company Profile', href: '/about#profile' },
+      { title: 'Board of Directors', href: '/about#directors' },
       { title: 'Our Strengths', href: '/about#strengths' },
       { title: 'Our Vision', href: '/about#vision' },
       { title: 'Market Focus', href: '/about#market' }
@@ -172,7 +173,7 @@ const Navbar = () => {
     }
   };
 
-    return (
+  return (
     <header className={getNavbarClasses()}>
       <div className="container mx-auto px-20">
         <div className="flex items-center justify-between">
