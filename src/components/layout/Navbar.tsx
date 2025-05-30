@@ -175,7 +175,7 @@ const Navbar = () => {
 
   return (
     <header className={getNavbarClasses()}>
-      <div className="container mx-auto px-20">
+      <div className="container mx-auto px-10">
         <div className="flex items-center justify-between">
           {/* Logo */}
           <Link to="/" className="flex items-center space-x-4">
@@ -185,7 +185,7 @@ const Navbar = () => {
               referrerPolicy="no-referrer"
               className="h-13 w-12 object-contain rounded-full"
             />
-            <span className="text-3xl font-bold text-white">Sri Datta Electronics Pvt. Ltd.</span>
+            <span className="text-2xl font-bold text-white">Sri Datta Electronics Pvt. Ltd.</span>
           </Link>
 
           {/* Desktop Navigation */}
