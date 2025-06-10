@@ -19,6 +19,11 @@ const directors: Director[] = [
     title: "Director",
     name: "Hari Swarnalatha",
     phone: "+91 9505889636"
+  },
+  {
+    title: "Director",
+    name: "Siri Parvathi Hari",
+    phone: "-"
   }
 ];
 
