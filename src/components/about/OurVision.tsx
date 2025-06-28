@@ -19,9 +19,7 @@ const OurVision = () => {
           <div className="bg-gradient-to-r from-tech-blue to-tech-accent text-white p-8 md:p-12 rounded-lg mb-12">
             <h3 className="text-2xl font-bold mb-6">Our Mission</h3>
             <p className="text-xl leading-relaxed mb-6">
-              To become market leader of products, services, and solutions in supporting the Indian 
-              space, Defence and avionics industry. Sri Datta Electronics is committed to realize this 
-              vision with four dedicated endeavors:
+              Sri Datta Electronics envisions becoming a global leader in delivering innovative, data-driven telemetry solutions, empowering industries with precise and reliable data collection and analysis to foster sustainable growth and operational excellence. With a strong commitment to supporting India’s space, defense, and avionics sectors, the company strives to lead the market through four strategic initiatives focused on high-quality products, services, and solutions.
             </p>
             
             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
